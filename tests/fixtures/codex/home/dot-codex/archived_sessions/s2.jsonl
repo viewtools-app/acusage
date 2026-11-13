@@ -1,0 +1,6 @@
+{"timestamp":"2026-11-02T09:00:00.000Z","type":"session_meta","payload":{"id":"s-0002","creator_account_id":"00000000-0000-4000-8000-0000000000c1"}}
+{"timestamp":"2026-11-02T09:00:01.000Z","type":"turn_context","payload":{"model":"gpt-test-a"}}
+{"timestamp":"2026-11-02T09:01:00.000Z","type":"token_usage_record","payload":{"session_id":"s-0001","response_id":"resp-1","usage":{"input_tokens":1000,"cached_input_tokens":400,"cache_write_input_tokens":50,"output_tokens":200}}}
+{"timestamp":"2026-11-02T09:02:00.000Z","type":"token_usage_record","payload":{"session_id":"s-0002","response_id":"resp-3","usage":{"input_tokens":10,"output_tokens":5}}}
+{"timestamp":"2026-11-02T09:03:00.000Z","type":"event_msg","payload":{"type":"token_count","info":null,"rate_limits":{"primary":null,"secondary":{"used_percent":40,"window_minutes":10080,"resets_at":1793900000},"plan_type":"plus"}}}
+{"timestamp":"2026-11-02T09:04:00.000Z","type":"event_msg","payload":{"type":"token_count","info":null,"rate_limits":{"primary":null,"secondary":null,"plan_type":"plus"}}}

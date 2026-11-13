@@ -1,0 +1,4 @@
+{"timestamp":"2026-11-02T12:00:00.000Z","type":"session_meta","payload":{"id":"s-0004","model":"gpt-meta"}}
+{"timestamp":"2026-11-02T12:01:00.000Z","type":"token_usage_record","payload":{"response_id":"resp-4","usage":{"input_tokens":7,"output_tokens":3}}}
+{"timestamp":"2026-11-02T12:02:00.000Z","type":"token_usage_record","payload":{"usage":{"input_tokens":1,"output_tokens":1}}}
+{"timestamp":"2026-11-02T12:03:00.000Z","type":"event_msg","payload":{"type":"token_count","info":null,"rate_limits":{"primary":{"used_percent":2,"window_minutes":300,"resets_at":1793000000}}}}

@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "report": "monthly",
+  "generated_at": "2026-11-02T12:00:00Z",
+  "rows": [
+    {
+      "account": {
+        "billing": "subscription",
+        "id": "00000000-0000-4000-8000-0000000000c2",
+        "label": "00000000",
+        "org_id": null,
+        "source": "owner",
+        "tool": "codex"
+      },
+      "bucket": "2026-11",
+      "cache_read_tokens": 100,
+      "cache_write_tokens": 0,
+      "cost_kind": "api_equivalent",
+      "cost_usd": null,
+      "input_tokens": 150,
+      "models": [
+        "gpt-test-c"
+      ],
+      "output_tokens": 30,
+      "partial_cost": false,
+      "project": "other",
+      "reasoning_tokens": 0,
+      "total_tokens": 280
+    }
+  ],
+  "totals": {
+    "cache_read_tokens": 100,
+    "cache_write_tokens": 0,
+    "cost_usd": null,
+    "input_tokens": 150,
+    "output_tokens": 30,
+    "partial_cost": false,
+    "reasoning_tokens": 0,
+    "total_tokens": 280
+  },
+  "unpriced_models": [
+    "gpt-test-c"
+  ]
+}

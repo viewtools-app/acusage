@@ -1,0 +1,14 @@
+# Prices are inflated so fixture costs show readable dollar amounts.
+[prices."claude-sonnet-4-5"]
+input = 3000000.0
+output = 15000000.0
+cache_write_5m = 3750000.0
+cache_write_1h = 6000000.0
+cache_read = 300000.0
+
+[prices."gpt-test-a"]
+input = 2000000.0
+output = 8000000.0
+cache_write_5m = 0.0
+cache_write_1h = 0.0
+cache_read = 500000.0

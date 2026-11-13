@@ -1,0 +1,26 @@
+╭──────────────────────────────────────────╮
+│ ACUsage · Daily Token Usage Report       │
+│                                          │
+│ Period    1 Nov 2026 to 2 Nov 2026 (UTC) │
+│ Accounts  unknown                        │
+│ Agents    Gemini CLI                     │
+│ View      by model                       │
+│ Filter    tool: Gemini CLI               │
+│                    acusage.viewtools.app │
+╰──────────────────────────────────────────╯
+┌────────────┬─────────┬──────────────────────────┬───────┬────────┬──────────────┬────────────┬──────────────┬─────────────────┐
+│ Date       │ Account │ Models                   │ Input │ Output │ Cache Create │ Cache Read │ Total Tokens │ API Value (USD) │
+├────────────┼─────────┼──────────────────────────┼───────┼────────┼──────────────┼────────────┼──────────────┼─────────────────┤
+│ 2026-11-01 │ unknown │ 2 models                 │ 1,710 │    410 │            0 │      1,800 │        3,920 │           $0.00 │
+│            │         │ └─ gemini-3.8-flash      │ 1,210 │    350 │            0 │      1,800 │        3,360 │           $0.00 │
+│            │         │ └─ gemini-3.5-flash-lite │   500 │     60 │            0 │          0 │          560 │           $0.00 │
+├────────────┼─────────┼──────────────────────────┼───────┼────────┼──────────────┼────────────┼──────────────┼─────────────────┤
+│ 2026-11-02 │ unknown │ 2 models                 │   140 │     35 │            0 │          0 │          175 │          $0.00* │
+│            │         │ └─ gemini-3.8-flash-high │   100 │     25 │            0 │          0 │          125 │           $0.00 │
+│            │         │ └─ gemini-9-test         │    40 │     10 │            0 │          0 │           50 │               - │
+├────────────┼─────────┼──────────────────────────┼───────┼────────┼──────────────┼────────────┼──────────────┼─────────────────┤
+│ Total      │         │                          │ 1,850 │    445 │            0 │      1,800 │        4,095 │          $0.00* │
+└────────────┴─────────┴──────────────────────────┴───────┴────────┴──────────────┴────────────┴──────────────┴─────────────────┘
+* excludes unpriced usage: gemini-9-test; add prices under [prices] in /nonexistent/acusage.toml
+API Value = what this usage would cost at API prices; subscriptions are not billed per token.
+unknown = usage whose log has no account record (2 sessions, 2026-11-01..2026-11-02); see README#accounts

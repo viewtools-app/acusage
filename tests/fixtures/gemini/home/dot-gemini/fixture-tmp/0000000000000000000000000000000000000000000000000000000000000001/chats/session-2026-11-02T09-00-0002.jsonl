@@ -1,0 +1,5 @@
+{"sessionId":"00000000-0000-4000-8000-000000000002","projectHash":"0000000000000000000000000000000000000000000000000000000000000001","startTime":"2026-11-02T09:00:00.000Z"}
+{"id":"n1","timestamp":"2026-11-02T09:00:05.000Z","type":"gemini","model":"gemini-3.8-flash-high","tokens":{"input":100,"output":20,"cached":0,"thoughts":5,"tool":0,"total":125}}
+this line is not json
+{"id":"n2","timestamp":"2026-11-02T09:01:00.000Z","type":"info","content":"ignored"}
+{"id":"n3","timestamp":"2026-11-02T09:02:00.000Z","type":"gemini","model":"gemini-9-test","tokens":{"input":40,"output":10,"cached":0,"thoughts":0,"tool":0,"total":50}}

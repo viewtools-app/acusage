@@ -1,0 +1,4 @@
+{"sessionId":"00000000-0000-4000-8000-000000000001","projectHash":"0000000000000000000000000000000000000000000000000000000000000002","startTime":"2026-11-01T10:00:00.000Z","messages":[
+{"id":"m2","timestamp":"2026-11-01T10:00:05.000Z","type":"gemini","model":"gemini-3.8-flash","tokens":{"input":1000,"output":200,"cached":300,"thoughts":50,"tool":10,"total":1260}},
+{"id":"m5","timestamp":"2026-11-01T11:00:00.000Z","type":"gemini","model":"gemini-3.5-flash-lite","tokens":{"input":500,"output":50,"cached":0,"thoughts":10,"tool":0,"total":560}}
+]}

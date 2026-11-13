@@ -1,0 +1,78 @@
+{
+  "schema": 1,
+  "report": "session",
+  "generated_at": "2026-11-02T12:00:00Z",
+  "rows": [
+    {
+      "account": {
+        "billing": "unknown",
+        "id": "unknown",
+        "label": "unknown",
+        "org_id": null,
+        "source": "unknown",
+        "tool": "gemini"
+      },
+      "cache_read_tokens": 1800,
+      "cache_write_tokens": 0,
+      "cost_kind": "api_equivalent",
+      "cost_usd": 0.002655,
+      "input_tokens": 1710,
+      "last_activity": "2026-11-01T11:00:00Z",
+      "models": [
+        "gemini-3.5-flash-lite",
+        "gemini-3.8-flash"
+      ],
+      "output_tokens": 410,
+      "partial_cost": false,
+      "project": null,
+      "reasoning_tokens": 60,
+      "session_id": "00000000-0000-4000-8000-000000000001",
+      "total_tokens": 3920
+    },
+    {
+      "account": {
+        "billing": "unknown",
+        "id": "unknown",
+        "label": "unknown",
+        "org_id": null,
+        "source": "unknown",
+        "tool": "gemini"
+      },
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_kind": "api_equivalent",
+      "cost_usd": 0.00016875,
+      "input_tokens": 140,
+      "last_activity": "2026-11-02T09:02:00Z",
+      "models": [
+        "gemini-3.8-flash-high",
+        "gemini-9-test"
+      ],
+      "output_tokens": 35,
+      "partial_cost": true,
+      "project": null,
+      "reasoning_tokens": 5,
+      "session_id": "00000000-0000-4000-8000-000000000002",
+      "total_tokens": 175
+    }
+  ],
+  "totals": {
+    "cache_read_tokens": 1800,
+    "cache_write_tokens": 0,
+    "cost_usd": 0.00282375,
+    "input_tokens": 1850,
+    "output_tokens": 445,
+    "partial_cost": true,
+    "reasoning_tokens": 65,
+    "total_tokens": 4095
+  },
+  "unpriced_models": [
+    "gemini-9-test"
+  ],
+  "local_models": [],
+  "price_sources": {
+    "gemini-3.5-flash-lite": "builtin",
+    "gemini-3.8-flash": "builtin",
+    "gemini-3.8-flash-high": "builtin"
+  }
+}

@@ -1,0 +1,1 @@
+{"sessionId":"00000000-0000-4000-8000-0000000000ff","messages":[{"id":"z","timestamp":"2026-11-01T12:00:00.000Z","type":"gemini","model":"gemini-3.8-flash","tokens":{"input":999999,"output":1,"cached":0,"thoughts":0,"tool":0,"total":1000000}}]}

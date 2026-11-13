@@ -1,0 +1,2 @@
+{"step_index": 0, "source": "USER", "type": "INPUT", "status": "DONE", "created_at": "2026-01-02T08:59:00Z", "content": "hello"}
+{"step_index": 1, "source": "MODEL", "type": "PLANNER_RESPONSE", "status": "DONE", "created_at": "2026-01-04T16:00:00Z", "input_tokens": 1200, "output_tokens": 120, "cache_read_tokens": 0, "content": "x"}

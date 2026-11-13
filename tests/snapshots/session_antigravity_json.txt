@@ -1,0 +1,234 @@
+{
+  "schema": 1,
+  "report": "session",
+  "generated_at": "2026-11-02T12:00:00Z",
+  "rows": [
+    {
+      "account": {
+        "billing": "unknown",
+        "id": "unknown",
+        "label": "unknown",
+        "org_id": null,
+        "source": "unknown",
+        "tool": "antigravity"
+      },
+      "cache_read_tokens": 150,
+      "cache_write_tokens": 0,
+      "cost_kind": "api_equivalent",
+      "cost_usd": null,
+      "input_tokens": 600,
+      "last_activity": "2026-01-02T09:02:00Z",
+      "models": [
+        "model-a",
+        "model-b"
+      ],
+      "output_tokens": 60,
+      "partial_cost": false,
+      "project": null,
+      "reasoning_tokens": 0,
+      "session_id": "00000000-0000-4000-8000-000000000001",
+      "total_tokens": 810
+    },
+    {
+      "account": {
+        "billing": "unknown",
+        "id": "unknown",
+        "label": "unknown",
+        "org_id": null,
+        "source": "unknown",
+        "tool": "antigravity"
+      },
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_kind": "api_equivalent",
+      "cost_usd": null,
+      "input_tokens": 400,
+      "last_activity": "2026-01-03T10:00:00Z",
+      "models": [
+        "model-big"
+      ],
+      "output_tokens": 40,
+      "partial_cost": false,
+      "project": null,
+      "reasoning_tokens": 0,
+      "session_id": "00000000-0000-4000-8000-000000000002",
+      "total_tokens": 440
+    },
+    {
+      "account": {
+        "billing": "unknown",
+        "id": "unknown",
+        "label": "unknown",
+        "org_id": null,
+        "source": "unknown",
+        "tool": "antigravity"
+      },
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_kind": "api_equivalent",
+      "cost_usd": null,
+      "input_tokens": 1180,
+      "last_activity": "2026-01-03T11:39:00Z",
+      "models": [
+        "model-c",
+        "model-c-last"
+      ],
+      "output_tokens": 820,
+      "partial_cost": false,
+      "project": null,
+      "reasoning_tokens": 0,
+      "session_id": "00000000-0000-4000-8000-000000000003",
+      "total_tokens": 2000
+    },
+    {
+      "account": {
+        "billing": "unknown",
+        "id": "unknown",
+        "label": "unknown",
+        "org_id": null,
+        "source": "unknown",
+        "tool": "antigravity"
+      },
+      "cache_read_tokens": 5,
+      "cache_write_tokens": 0,
+      "cost_kind": "api_equivalent",
+      "cost_usd": null,
+      "input_tokens": 500,
+      "last_activity": "2026-01-04T12:00:00Z",
+      "models": [
+        "unknown"
+      ],
+      "output_tokens": 50,
+      "partial_cost": false,
+      "project": null,
+      "reasoning_tokens": 0,
+      "session_id": "00000000-0000-4000-8000-000000000004",
+      "total_tokens": 555
+    },
+    {
+      "account": {
+        "billing": "unknown",
+        "id": "unknown",
+        "label": "unknown",
+        "org_id": null,
+        "source": "unknown",
+        "tool": "antigravity"
+      },
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_kind": "api_equivalent",
+      "cost_usd": null,
+      "input_tokens": 2100,
+      "last_activity": "2026-01-04T13:02:00Z",
+      "models": [
+        "model-a",
+        "model-b",
+        "unknown"
+      ],
+      "output_tokens": 210,
+      "partial_cost": false,
+      "project": null,
+      "reasoning_tokens": 0,
+      "session_id": "00000000-0000-4000-8000-000000000005",
+      "total_tokens": 2310
+    },
+    {
+      "account": {
+        "billing": "unknown",
+        "id": "unknown",
+        "label": "unknown",
+        "org_id": null,
+        "source": "unknown",
+        "tool": "antigravity"
+      },
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_kind": "api_equivalent",
+      "cost_usd": null,
+      "input_tokens": 1900,
+      "last_activity": "2026-01-04T14:01:00Z",
+      "models": [
+        "model-f",
+        "unknown"
+      ],
+      "output_tokens": 190,
+      "partial_cost": false,
+      "project": null,
+      "reasoning_tokens": 0,
+      "session_id": "00000000-0000-4000-8000-000000000006",
+      "total_tokens": 2090
+    },
+    {
+      "account": {
+        "billing": "unknown",
+        "id": "unknown",
+        "label": "unknown",
+        "org_id": null,
+        "source": "unknown",
+        "tool": "antigravity"
+      },
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_kind": "api_equivalent",
+      "cost_usd": null,
+      "input_tokens": 1100,
+      "last_activity": "2026-01-04T15:00:00Z",
+      "models": [
+        "unknown"
+      ],
+      "output_tokens": 110,
+      "partial_cost": false,
+      "project": null,
+      "reasoning_tokens": 0,
+      "session_id": "00000000-0000-4000-8000-000000000007",
+      "total_tokens": 1210
+    },
+    {
+      "account": {
+        "billing": "unknown",
+        "id": "unknown",
+        "label": "unknown",
+        "org_id": null,
+        "source": "unknown",
+        "tool": "antigravity"
+      },
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_kind": "api_equivalent",
+      "cost_usd": null,
+      "input_tokens": 1200,
+      "last_activity": "2026-01-04T16:00:00Z",
+      "models": [
+        "model_placeholder_x9"
+      ],
+      "output_tokens": 120,
+      "partial_cost": false,
+      "project": null,
+      "reasoning_tokens": 0,
+      "session_id": "00000000-0000-4000-8000-000000000008",
+      "total_tokens": 1320
+    }
+  ],
+  "totals": {
+    "cache_read_tokens": 155,
+    "cache_write_tokens": 0,
+    "cost_usd": null,
+    "input_tokens": 8980,
+    "output_tokens": 1600,
+    "partial_cost": false,
+    "reasoning_tokens": 0,
+    "total_tokens": 10735
+  },
+  "unpriced_models": [
+    "model-a",
+    "model-b",
+    "model-big",
+    "model-c",
+    "model-c-last",
+    "model-f",
+    "model_placeholder_x9",
+    "unknown"
+  ],
+  "local_models": [],
+  "price_sources": {}
+}

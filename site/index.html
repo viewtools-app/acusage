@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>acusage · token usage per account for Claude Code, Codex, Antigravity and Gemini CLI</title>
+<meta name="description" content="A read-only CLI that reports token usage and API value from local Claude Code, Codex, Antigravity and Gemini CLI logs, broken down by account. Offline, single Rust binary.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23f5f5f2'/%3E%3Cpath d='M7 10l7 6-7 6' stroke='%23d9480f' stroke-width='3' fill='none'/%3E%3Cpath d='M16 23h9' stroke='%232a2a28' stroke-width='3'/%3E%3C/svg%3E">
+<style>
+  @font-face { font-family: "JetBrains Mono"; font-weight: 400; src: url("fonts/JetBrainsMono-Regular.woff2") format("woff2"); font-display: swap; }
+  @font-face { font-family: "JetBrains Mono"; font-weight: 600; src: url("fonts/JetBrainsMono-SemiBold.woff2") format("woff2"); font-display: swap; }
+  @font-face { font-family: "LisaTerminal Paper"; src: url("fonts/LisaTerminalPaper2X3Y.ttf") format("truetype"); font-display: swap; }
+  :root {
+    --bg: #f5f5f2; --fg: #2a2a28; --dim: #66665f; --hi: #000000;
+    --line: #d6d6cf; --sel: #ebebe6; --accent: #d9480f; --ok: #2b8a3e; --str: #9c6500;
+    --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    --box: ui-monospace, "SF Mono", Menlo, Consolas, "DejaVu Sans Mono", monospace;
+    --pixel: "LisaTerminal Paper", var(--mono);
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 15px/1.65 var(--mono); }
+  a { color: var(--hi); text-decoration: underline; text-decoration-color: var(--dim); text-underline-offset: 3px; }
+  a:hover { text-decoration-color: var(--accent); }
+  ::selection { background: var(--accent); color: var(--bg); }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 24px; }
+  .dim { color: var(--dim); }
+  .acc { color: var(--accent); }
+  .ok { color: var(--ok); }
+  .str { color: var(--str); }
+  .hi { color: var(--hi); }
+
+  /* top status line, tmux style */
+  .status { position: sticky; top: 0; z-index: 5; background: var(--sel); color: var(--dim); border-bottom: 1px solid var(--line); font: 14px/32px var(--mono); }
+  .status .wrap { display: flex; justify-content: space-between; gap: 16px; white-space: nowrap; overflow: hidden; }
+  .status a { color: var(--fg); text-decoration: none; margin-left: 16px; }
+  .status a:hover { text-decoration: underline; }
+  .status .s { background: var(--accent); color: var(--bg); padding: 0 8px; margin-right: 6px; font-weight: 600; }
+
+  /* prompt lines */
+  .p { white-space: pre-wrap; word-break: break-word; }
+  .p::before { content: "$ "; color: var(--accent); }
+  .c { color: var(--dim); }
+  .c::before { content: "# "; }
+  .cursor { display: inline-block; width: .6em; height: 1.15em; vertical-align: text-bottom; background: var(--fg); animation: blink 1.1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) { .cursor { animation: none; } }
+
+  /* hero */
+  .hero { padding: 96px 0 8px; text-align: center; }
+  .hero .lede, .hero .install, .hero .or { margin-left: auto; margin-right: auto; }
+  .hero .or { text-align: left; }
+  .logo { font: 46px/1 var(--pixel); color: var(--hi); margin: 0 0 30px; letter-spacing: 0.02em; }
+  .logo .acc { animation: blink 1.1s steps(1) infinite; }
+  h1 { font: 600 clamp(36px, 6.4vw, 72px)/1.05 var(--mono); color: var(--hi); margin: 14px auto 22px; letter-spacing: -0.04em; max-width: 900px; text-wrap: balance; }
+  h1 .acc { color: var(--accent); }
+  .lede { max-width: 680px; margin: 0 0 34px; font-size: 17px; color: var(--fg); text-wrap: pretty; }
+
+  .install { text-align: left; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; border: 1px solid var(--line); background: var(--sel); padding: 12px 16px; max-width: 720px; }
+  .install .p { flex: 1; font-size: 17px; color: var(--hi); }
+  button.copy { font: 13px var(--mono); color: var(--fg); background: transparent; border: 1px solid var(--line); padding: 3px 10px; cursor: pointer; }
+  button.copy:hover { border-color: var(--accent); color: var(--accent); }
+  .or { margin: 10px 0 0; font-size: 13px; max-width: 720px; }
+  .or .p { display: block; white-space: nowrap; overflow-x: auto; color: var(--fg); padding-bottom: 6px; scrollbar-width: thin; }
+
+  .cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin: 0 0 26px; }
+  .btn { font: 600 15px var(--mono); text-decoration: none; padding: 11px 20px; border: 1px solid var(--accent); }
+  .btn.pri { background: var(--accent); color: var(--bg); }
+  .btn.sec { color: var(--hi); border-color: var(--line); }
+  .btn.sec:hover { border-color: var(--hi); }
+  .btn.pri:hover { filter: brightness(1.1); }
+
+  /* product shot: terminal window */
+  .term { border: 1px solid var(--line); border-radius: 10px; background: #fbfbf9; margin: 72px auto 0; overflow: hidden; box-shadow: 0 18px 50px rgba(0,0,0,.08); text-align: left; }
+  .term .bar { display: flex; align-items: center; gap: 7px; padding: 10px 14px; border-bottom: 1px solid var(--line); font-size: 12px; color: var(--dim); }
+  .term .bar i { width: 11px; height: 11px; border-radius: 50%; background: var(--line); }
+  .term .bar span { margin-left: 10px; }
+  .term .body { padding: 16px 20px 22px; }
+
+  .final { text-align: center; padding: 110px 0 0; }
+  .final h2 { font: 600 clamp(28px, 4.4vw, 46px)/1.1 var(--mono); color: var(--hi); letter-spacing: -0.03em; margin: 0 0 24px; }
+  .final .install { margin: 0 auto; }
+
+  /* section rules like "── title ─────" */
+  section { padding: 72px 0 0; }
+  .rule { display: flex; align-items: center; gap: 12px; color: var(--hi); font-weight: 600; margin: 0 0 22px; }
+  .rule::before { content: "──"; color: var(--line); letter-spacing: -0.1em; }
+  .rule::after { content: ""; flex: 1; border-top: 1px solid var(--line); }
+  .rule .n { color: var(--accent); font-weight: 400; }
+
+  pre.out { margin: 6px 0 0; overflow-x: auto; font: 13px/1.2 var(--box); color: var(--fg); padding: 2px 0 6px; }
+  pre.out .bx { color: #a8a8a0; }
+  pre.help { font: 14px/1.6 var(--mono); margin: 6px 0 0; overflow-x: auto; }
+
+  /* box with title in the border, like the report header */
+  .box { position: relative; border: 1px solid var(--line); border-radius: 8px; padding: 22px 22px 18px; margin-top: 14px; }
+  .box > .t { position: absolute; top: -0.85em; left: 14px; background: var(--bg); padding: 0 8px; color: var(--hi); }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .grid .box p { margin: 0; }
+  .grid .box .k { color: var(--accent); display: block; margin-bottom: 6px; }
+
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .stat .n { font: 600 40px/1.1 var(--mono); color: var(--accent); }
+  .stat .k { color: var(--dim); font-size: 14px; }
+
+  ul.ok-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+  ul.ok-list li::before { content: "[ ok ] "; color: var(--ok); white-space: pre; }
+
+  footer { margin: 88px 0 0; border-top: 1px solid var(--line); padding: 20px 0 36px; font-size: 14px; color: var(--dim);
+           display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+
+  @media (max-width: 760px) {
+    body { font-size: 14px; }
+    .grid, .stats { grid-template-columns: 1fr; }
+    .logo { font-size: 36px; }
+    .status .hide-sm { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="status">
+  <div class="wrap">
+    <span><span class="s">acusage</span> 0:readme* 1:install 2:privacy</span>
+    <span>
+      <a class="hide-sm" href="#install">install</a>
+      <a class="hide-sm" href="#commands">commands</a>
+      <a class="hide-sm" href="#privacy">privacy</a>
+      <a href="https://github.com/viewtools-app/acusage#readme">docs</a>
+      <a href="https://github.com/viewtools-app/acusage">github</a>
+    </span>
+  </div>
+</div>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="logo">acusage<span class="acc">_</span></div>
+    <div class="c">open source · MIT · offline</div>
+    <h1>Know which account spent your <span class="acc">AI tokens</span>.</h1>
+    <p class="lede">acusage reads the local logs of <span class="hi">Claude Code</span>, <span class="hi">Codex</span>,
+      <span class="hi">Antigravity</span> and <span class="hi">Gemini CLI</span> and reports tokens and API value per
+      account, agent, model, day and session. One Rust binary. No network, no writes.</p>
+
+    <div class="cta">
+      <a class="btn pri" href="#install">Get started</a>
+      <a class="btn sec" href="https://github.com/viewtools-app/acusage">GitHub</a>
+    </div>
+    <div id="install" class="install">
+      <span class="p">npx acusage<span class="cursor" aria-hidden="true"></span></span>
+      <button class="copy" type="button" data-copy="npx acusage">[ copy ]</button>
+    </div>
+    <div class="or">
+      <div class="c">or install the binary (macOS, Linux)</div>
+      <span class="p">curl -LsSf https://github.com/viewtools-app/acusage/releases/latest/download/acusage-installer.sh | sh</span>
+    </div>
+
+    <div class="term">
+      <div class="bar"><i></i><i></i><i></i><span>~ zsh</span></div>
+      <div class="body">
+        <div class="p">acusage daily --compact</div>
+<pre class="out"><span class="bx">╭──────────────────────────────────────────╮</span>
+<span class="bx">│</span> ACUsage · Daily Token Usage Report       <span class="bx">│</span>
+<span class="bx">│</span>                                          <span class="bx">│</span>
+<span class="bx">│</span> Period    9 Nov 2026 to 10 Nov 2026      <span class="bx">│</span>
+<span class="bx">│</span> Accounts  3                              <span class="bx">│</span>
+<span class="bx">│</span> Agents    Claude Code, Codex             <span class="bx">│</span>
+<span class="bx">│</span>                    acusage.viewtools.app <span class="bx">│</span>
+<span class="bx">╰──────────────────────────────────────────╯</span>
+<span class="bx">┌────────────┬───────────────┬────────────────┬───────────────┬───────────┬─────────┬─────────────────┐</span>
+<span class="bx">│</span> Date       <span class="bx">│</span> Agent         <span class="bx">│</span> Account        <span class="bx">│</span> Models        <span class="bx">│</span> Input     <span class="bx">│</span> Output  <span class="bx">│</span> API Value (USD) <span class="bx">│</span>
+<span class="bx">├────────────┼───────────────┼────────────────┼───────────────┼───────────┼─────────┼─────────────────┤</span>
+<span class="bx">│</span> 2026-11-09 <span class="bx">│</span> All           <span class="bx">│</span>                <span class="bx">│</span>               <span class="bx">│</span> 1,912,407 <span class="bx">│</span> 402,118 <span class="bx">│</span>          $48.10 <span class="bx">│</span>
+<span class="bx">├────────────┼───────────────┼────────────────┼───────────────┼───────────┼─────────┼─────────────────┤</span>
+<span class="bx">│</span>            <span class="bx">│</span> - Claude Code <span class="bx">│</span> me (Personal)  <span class="bx">│</span> - opus-5-5    <span class="bx">│</span> 1,204,331 <span class="bx">│</span> 251,092 <span class="bx">│</span>          $31.75 <span class="bx">│</span>
+<span class="bx">├────────────┼───────────────┼────────────────┼───────────────┼───────────┼─────────┼─────────────────┤</span>
+<span class="bx">│</span>            <span class="bx">│</span> - Codex       <span class="bx">│</span> me (Work)      <span class="bx">│</span> - gpt-6.1-sol <span class="bx">│</span>   708,076 <span class="bx">│</span> 151,026 <span class="bx">│</span>          $16.35 <span class="bx">│</span>
+<span class="bx">├────────────┼───────────────┼────────────────┼───────────────┼───────────┼─────────┼─────────────────┤</span>
+<span class="bx">│</span> 2026-11-10 <span class="bx">│</span> All           <span class="bx">│</span>                <span class="bx">│</span>               <span class="bx">│</span>   864,210 <span class="bx">│</span> 190,334 <span class="bx">│</span>          $19.40 <span class="bx">│</span>
+<span class="bx">├────────────┼───────────────┼────────────────┼───────────────┼───────────┼─────────┼─────────────────┤</span>
+<span class="bx">│</span>            <span class="bx">│</span> - Claude Code <span class="bx">│</span> team (Example) <span class="bx">│</span> - sonnet-5-5  <span class="bx">│</span>   864,210 <span class="bx">│</span> 190,334 <span class="bx">│</span>          $19.40 <span class="bx">│</span>
+<span class="bx">├────────────┼───────────────┼────────────────┼───────────────┼───────────┼─────────┼─────────────────┤</span>
+<span class="bx">│</span> Total      <span class="bx">│</span>               <span class="bx">│</span>                <span class="bx">│</span>               <span class="bx">│</span> 2,776,617 <span class="bx">│</span> 592,452 <span class="bx">│</span>          $67.50 <span class="bx">│</span>
+<span class="bx">└────────────┴───────────────┴────────────────┴───────────────┴───────────┴─────────┴─────────────────┘</span>
+<span class="dim">API Value = what this usage would cost at API prices; subscriptions are not billed per token.</span></pre>
+      </div>
+    </div>
+    <div class="c" style="margin-top:12px">illustrative numbers; the table format is the real one</div>
+  </header>
+
+
+  <section>
+    <div class="rule"><span class="n">01</span> why</div>
+    <div class="grid">
+      <div class="box"><span class="t">per-account</span><span class="k">--account</span>
+        <p>Personal, work, a second subscription. Every request is tied to the account that made it.</p></div>
+      <div class="box"><span class="t">windows</span><span class="k">blocks · limits</span>
+        <p>5-hour billing blocks with burn rate and projection, and Codex rate-limit windows.</p></div>
+      <div class="box"><span class="t">scriptable</span><span class="k">--json</span>
+        <p>Stable JSON output for your own dashboards, scripts and status bars.</p></div>
+    </div>
+    <div class="stats" style="margin-top:36px">
+      <div class="stat"><div class="n">~100ms</div><div class="k">daily --json over ~630 MB of logs, MacBook</div></div>
+      <div class="stat"><div class="n">0</div><div class="k">network connections</div></div>
+      <div class="stat"><div class="n">0</div><div class="k">files written</div></div>
+    </div>
+  </section>
+
+  <section id="commands">
+    <div class="rule"><span class="n">02</span> commands</div>
+    <div class="p">acusage --help</div>
+<pre class="help">Usage report for Claude Code, Codex, Antigravity and Gemini CLI logs
+
+<span class="hi">Usage:</span> acusage [OPTIONS] [COMMAND]
+
+<span class="hi">Commands:</span>
+  <span class="acc">daily</span>     Usage per day (default)
+  <span class="acc">weekly</span>    Usage per ISO week (Monday start)
+  <span class="acc">monthly</span>   Usage per month
+  <span class="acc">session</span>   One row per session
+  <span class="acc">blocks</span>    Billing blocks per account (5-hour windows)
+  <span class="acc">accounts</span>  Every account seen
+  <span class="acc">limits</span>    Codex rate-limit windows
+<span class="dim">  ...</span></pre>
+    <div class="c" style="margin-top:12px">full reference: <a href="https://github.com/viewtools-app/acusage/blob/main/docs/usage.md">docs/usage.md</a></div>
+  </section>
+
+  <section id="privacy">
+    <div class="rule"><span class="n">03</span> privacy</div>
+    <ul class="ok-list">
+      <li><span class="hi">no network.</span> The binary opens no sockets. Prices come from a built-in table, an embedded LiteLLM snapshot and your config.</li>
+      <li><span class="hi">no writes.</span> It never creates, changes, locks or deletes a file. A test runs it against read-only logs.</li>
+      <li><span class="hi">no credentials.</span> It never reads token or auth files; from the account file it reads only the fields used for labels.</li>
+    </ul>
+  </section>
+
+  <section class="final">
+    <h2>Try it in five seconds.</h2>
+    <div class="install">
+      <span class="p">npx acusage</span>
+      <button class="copy" type="button" data-copy="npx acusage">[ copy ]</button>
+    </div>
+    <div class="c" style="margin-top:12px">reads your local logs, prints a table, touches nothing</div>
+  </section>
+
+  <footer>
+    <span>acusage · MIT · <a href="https://github.com/viewtools-app/acusage">github</a> · <a href="https://github.com/viewtools-app/acusage/releases">releases</a></span>
+    <span>logo font: LisaTerminal Paper by <a href="https://www.kreativekorp.com/software/fonts/">Kreative Software</a></span>
+  </footer>
+</div>
+
+<script>
+  document.querySelectorAll('[data-copy]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      navigator.clipboard.writeText(b.dataset.copy).then(function () {
+        b.textContent = '[ copied ]';
+        setTimeout(function () { b.textContent = '[ copy ]'; }, 1500);
+      }).catch(function () {
+        b.textContent = '[ copy failed ]';
+        setTimeout(function () { b.textContent = '[ copy ]'; }, 1500);
+      });
+    });
+  });
+</script>
+</body>
+</html>

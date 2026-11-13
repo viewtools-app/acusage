@@ -1,0 +1,235 @@
+{
+  "schema": 1,
+  "report": "daily",
+  "generated_at": "2026-11-02T12:00:00Z",
+  "rows": [
+    {
+      "account": {
+        "billing": "subscription",
+        "id": "00000000-0000-4000-8000-000000000001",
+        "label": "user@example.com (Example Org)",
+        "org_id": "00000000-0000-4000-8000-0000000000a1",
+        "source": "owner",
+        "tool": "claude"
+      },
+      "bucket": "2026-11-01",
+      "cache_read_tokens": 14,
+      "cache_write_tokens": 200,
+      "cost_kind": "api_equivalent",
+      "cost_usd": 0.0014352000000000002,
+      "input_tokens": 22,
+      "models": [
+        "claude-sonnet-4-5"
+      ],
+      "output_tokens": 32,
+      "partial_cost": false,
+      "reasoning_tokens": 0,
+      "total_tokens": 268
+    },
+    {
+      "account": {
+        "billing": "subscription",
+        "id": "00000000-0000-4000-8000-0000000000c1",
+        "label": "00000000",
+        "org_id": null,
+        "source": "owner",
+        "tool": "codex"
+      },
+      "bucket": "2026-11-01",
+      "cache_read_tokens": 500,
+      "cache_write_tokens": 0,
+      "cost_kind": "api_equivalent",
+      "cost_usd": null,
+      "input_tokens": 0,
+      "models": [
+        "gpt-test-b"
+      ],
+      "output_tokens": 40,
+      "partial_cost": false,
+      "reasoning_tokens": 0,
+      "total_tokens": 540
+    },
+    {
+      "account": {
+        "billing": "unknown",
+        "id": "unknown",
+        "label": "unknown",
+        "org_id": null,
+        "source": "unknown",
+        "tool": "claude"
+      },
+      "bucket": "2026-11-02",
+      "cache_read_tokens": 7,
+      "cache_write_tokens": 100,
+      "cost_kind": "api_equivalent",
+      "cost_usd": null,
+      "input_tokens": 10,
+      "models": [
+        "claude-opus-4-1"
+      ],
+      "output_tokens": 4,
+      "partial_cost": false,
+      "reasoning_tokens": 0,
+      "total_tokens": 121
+    },
+    {
+      "account": {
+        "billing": "subscription",
+        "id": "00000000-0000-4000-8000-000000000001",
+        "label": "user@example.com (Example Org)",
+        "org_id": "00000000-0000-4000-8000-0000000000a1",
+        "source": "owner",
+        "tool": "claude"
+      },
+      "bucket": "2026-11-02",
+      "cache_read_tokens": 7,
+      "cache_write_tokens": 100,
+      "cost_kind": "api_equivalent",
+      "cost_usd": null,
+      "input_tokens": 10,
+      "models": [
+        "claude-opus-4-1"
+      ],
+      "output_tokens": 3,
+      "partial_cost": false,
+      "reasoning_tokens": 0,
+      "total_tokens": 120
+    },
+    {
+      "account": {
+        "billing": "subscription",
+        "id": "00000000-0000-4000-8000-0000000000c1",
+        "label": "00000000",
+        "org_id": null,
+        "source": "owner",
+        "tool": "codex"
+      },
+      "bucket": "2026-11-02",
+      "cache_read_tokens": 400,
+      "cache_write_tokens": 50,
+      "cost_kind": "api_equivalent",
+      "cost_usd": null,
+      "input_tokens": 610,
+      "models": [
+        "gpt-test-a"
+      ],
+      "output_tokens": 205,
+      "partial_cost": false,
+      "reasoning_tokens": 0,
+      "total_tokens": 1265
+    },
+    {
+      "account": {
+        "billing": "subscription",
+        "id": "00000000-0000-4000-8000-0000000000c2",
+        "label": "00000000",
+        "org_id": null,
+        "source": "owner",
+        "tool": "codex"
+      },
+      "bucket": "2026-11-02",
+      "cache_read_tokens": 100,
+      "cache_write_tokens": 0,
+      "cost_kind": "api_equivalent",
+      "cost_usd": null,
+      "input_tokens": 150,
+      "models": [
+        "gpt-test-c"
+      ],
+      "output_tokens": 30,
+      "partial_cost": false,
+      "reasoning_tokens": 0,
+      "total_tokens": 280
+    },
+    {
+      "account": {
+        "billing": "unknown",
+        "id": "unknown",
+        "label": "unknown",
+        "org_id": null,
+        "source": "unknown",
+        "tool": "codex"
+      },
+      "bucket": "2026-11-02",
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_kind": "api_equivalent",
+      "cost_usd": null,
+      "input_tokens": 8,
+      "models": [
+        "gpt-meta"
+      ],
+      "output_tokens": 4,
+      "partial_cost": false,
+      "reasoning_tokens": 0,
+      "total_tokens": 12
+    },
+    {
+      "account": {
+        "billing": "subscription",
+        "id": "00000000-0000-4000-8000-000000000003",
+        "label": "00000000",
+        "org_id": "00000000-0000-4000-8000-0000000000a2",
+        "source": "owner",
+        "tool": "claude"
+      },
+      "bucket": "2026-11-03",
+      "cache_read_tokens": 7,
+      "cache_write_tokens": 100,
+      "cost_kind": "api_equivalent",
+      "cost_usd": 0.0005721,
+      "input_tokens": 10,
+      "models": [
+        "claude-sonnet-4-5"
+      ],
+      "output_tokens": 11,
+      "partial_cost": false,
+      "reasoning_tokens": 0,
+      "total_tokens": 128
+    },
+    {
+      "account": {
+        "billing": "subscription",
+        "id": "00000000-0000-4000-8000-000000000002",
+        "label": "work@example.com (Work Org)",
+        "org_id": "00000000-0000-4000-8000-0000000000a2",
+        "source": "profile",
+        "tool": "claude"
+      },
+      "bucket": "2026-11-03",
+      "cache_read_tokens": 7,
+      "cache_write_tokens": 100,
+      "cost_kind": "api_equivalent",
+      "cost_usd": 0.0005421,
+      "input_tokens": 10,
+      "models": [
+        "claude-sonnet-4-5"
+      ],
+      "output_tokens": 9,
+      "partial_cost": false,
+      "reasoning_tokens": 0,
+      "total_tokens": 126
+    }
+  ],
+  "totals": {
+    "cache_read_tokens": 1042,
+    "cache_write_tokens": 650,
+    "cost_usd": 0.0025494000000000003,
+    "input_tokens": 830,
+    "output_tokens": 338,
+    "partial_cost": true,
+    "reasoning_tokens": 0,
+    "total_tokens": 2860
+  },
+  "unpriced_models": [
+    "claude-opus-4-1",
+    "gpt-meta",
+    "gpt-test-a",
+    "gpt-test-b",
+    "gpt-test-c"
+  ],
+  "local_models": [],
+  "price_sources": {
+    "claude-sonnet-4-5": "litellm"
+  }
+}

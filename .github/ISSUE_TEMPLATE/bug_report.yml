@@ -1,0 +1,45 @@
+name: Bug report
+description: Something is wrong or crashes
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Redact paths, emails and account ids. Do not paste real session logs.
+  - type: input
+    id: version
+    attributes:
+      label: Version (`acusage --version`)
+    validations:
+      required: true
+  - type: input
+    id: platform
+    attributes:
+      label: OS and architecture
+    validations:
+      required: true
+  - type: dropdown
+    id: install
+    attributes:
+      label: Install method
+      options: [npx, npm -g, shell installer, cargo install, from source]
+    validations:
+      required: true
+  - type: dropdown
+    id: agent
+    attributes:
+      label: Agent
+      options: [Claude Code, Codex, Antigravity, Gemini CLI, Any]
+    validations:
+      required: true
+  - type: input
+    id: command
+    attributes:
+      label: Command you ran
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What happened (expected vs actual, redacted output)
+    validations:
+      required: true
