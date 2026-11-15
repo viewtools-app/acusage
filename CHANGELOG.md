@@ -4,6 +4,9 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versioning: [S
 
 ## [Unreleased]
 
+### Added
+- README demo GIFs for every command, recorded from synthetic logs with `scripts/demo/record.sh` (needs [vhs](https://github.com/charmbracelet/vhs)).
+
 ## [0.5.0] - 2026-11-13
 
 First public release.
