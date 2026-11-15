@@ -59,6 +59,52 @@ acusage blocks --active                        # current block with projections
 acusage monthly --tool codex --json            # machine-readable
 ```
 
+### Demos
+
+The recordings below use synthetic logs (`scripts/demo/record.sh`); numbers are illustrative.
+
+<details open>
+<summary><code>acusage daily</code>: usage per day</summary>
+
+![acusage daily --last 2](docs/demo/daily.gif)
+</details>
+
+<details>
+<summary><code>acusage weekly</code>: usage per ISO week</summary>
+
+![acusage weekly --last 2](docs/demo/weekly.gif)
+</details>
+
+<details>
+<summary><code>acusage monthly</code>: usage per month</summary>
+
+![acusage monthly](docs/demo/monthly.gif)
+</details>
+
+<details>
+<summary><code>acusage session</code>: one row per session</summary>
+
+![acusage session](docs/demo/session.gif)
+</details>
+
+<details>
+<summary><code>acusage blocks</code>: 5-hour billing blocks</summary>
+
+![acusage blocks --active --account Personal](docs/demo/blocks.gif)
+</details>
+
+<details>
+<summary><code>acusage accounts</code>: every account seen</summary>
+
+![acusage accounts](docs/demo/accounts.gif)
+</details>
+
+<details>
+<summary><code>acusage limits</code>: Codex rate-limit windows</summary>
+
+![acusage limits](docs/demo/limits.gif)
+</details>
+
 ## Accounts
 
 Each row belongs to one account, labeled by alias, else email, else id. The account comes from the log itself (`owner`) or from the Claude config dir the log lives in (`profile`).
