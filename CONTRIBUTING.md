@@ -1,6 +1,6 @@
 # Contributing
 
-acusage is read-only and offline. Every change keeps that: no network, no file writes (tests may use temp dirs), no credential reads.
+atkusage is read-only and offline. Every change keeps that: no network, no file writes (tests may use temp dirs), no credential reads.
 
 ## Setup and checks
 

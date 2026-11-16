@@ -3,7 +3,7 @@
 #[macro_export]
 macro_rules! homepage {
     () => {
-        "https://acusage.viewtools.app"
+        "https://atkusage.viewtools.app"
     };
 }
 

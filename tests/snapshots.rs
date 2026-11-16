@@ -1,10 +1,10 @@
 //! Snapshot tests: run the whole pipeline on the synthetic fixture homes and compare the
 //! rendered output with tests/snapshots/<name>.txt. Set UPDATE_SNAPSHOTS=1 to rewrite them.
 
-use acusage::app::{self, Env};
-use acusage::cli::Cli;
-use acusage::pricing::{PriceSource, PriceTable};
-use acusage::render::{self, RenderOpts};
+use atkusage::app::{self, Env};
+use atkusage::cli::Cli;
+use atkusage::pricing::{PriceSource, PriceTable};
+use atkusage::render::{self, RenderOpts};
 use chrono::{TimeZone, Utc};
 use clap::Parser;
 
@@ -13,7 +13,7 @@ mod common;
 use common::fixtures;
 
 fn render_args(args: &[&str]) -> String {
-    render_cfg(args, "/nonexistent/acusage.toml")
+    render_cfg(args, "/nonexistent/atkusage.toml")
 }
 
 fn render_cfg(args: &[&str], config: &str) -> String {
@@ -43,7 +43,7 @@ fn run_all(
     let codex_tmp = common::fixture_home("codex/home");
     let claude_home = claude_tmp.path().to_path_buf();
     let codex_home = codex_tmp.path().to_path_buf();
-    let mut argv: Vec<String> = ["acusage", "--utc"].map(String::from).to_vec();
+    let mut argv: Vec<String> = ["atkusage", "--utc"].map(String::from).to_vec();
     argv.extend(args.iter().map(|s| s.to_string()));
     for (flag, path) in [
         ("--claude-dir", claude_home.join(".claude")),
@@ -72,7 +72,7 @@ fn run_all(
         home: claude_home,
         claude_config_dir: None,
         codex_home: None,
-        acusage_config: Some(config.into()),
+        atkusage_config: Some(config.into()),
         now: Utc.with_ymd_and_hms(2026, 11, 2, 12, 0, 0).unwrap(),
     };
     let out = app::run(&cli, &env)?;
@@ -95,7 +95,7 @@ fn render_out(out: &app::Output, cli: &Cli, width: Option<usize>) -> String {
 }
 
 fn check(name: &str, args: &[&str]) {
-    check_cfg(name, args, "/nonexistent/acusage.toml");
+    check_cfg(name, args, "/nonexistent/atkusage.toml");
 }
 
 fn check_cfg(name: &str, args: &[&str], config: &str) {
@@ -105,13 +105,13 @@ fn check_cfg(name: &str, args: &[&str], config: &str) {
 
 /// Snapshot of a run that includes the Antigravity fixture.
 fn check_agy(name: &str, args: &[&str]) {
-    let (out, cli) = run_full(args, "/nonexistent/acusage.toml", true).unwrap();
+    let (out, cli) = run_full(args, "/nonexistent/atkusage.toml", true).unwrap();
     compare(name, render_out(&out, &cli, None));
 }
 
 /// Snapshot of a run that includes the Gemini CLI fixture.
 fn check_gemini(name: &str, args: &[&str]) {
-    let (out, cli) = run_all(args, "/nonexistent/acusage.toml", false, true).unwrap();
+    let (out, cli) = run_all(args, "/nonexistent/atkusage.toml", false, true).unwrap();
     compare(name, render_out(&out, &cli, None));
 }
 
@@ -223,7 +223,7 @@ fn weekly() {
 fn err(args: &[&str]) -> String {
     format!(
         "{:#}",
-        run_cfg(args, "/nonexistent/acusage.toml").err().unwrap()
+        run_cfg(args, "/nonexistent/atkusage.toml").err().unwrap()
     )
 }
 
@@ -231,7 +231,7 @@ fn err(args: &[&str]) -> String {
 fn contradictory_filters_are_usage_errors() {
     let e = run_cfg(
         &["daily", "--since", "2026-11-02", "--until", "2026-11-01"],
-        "/nonexistent/acusage.toml",
+        "/nonexistent/atkusage.toml",
     )
     .err()
     .unwrap();
@@ -258,16 +258,16 @@ fn unknown_account_lists_known_labels() {
 
 #[test]
 fn bare_run_is_limited_to_30_days() {
-    let (bare, _) = run_cfg(&[], "/nonexistent/acusage.toml").unwrap();
+    let (bare, _) = run_cfg(&[], "/nonexistent/atkusage.toml").unwrap();
     assert!(bare.default_window);
-    let (daily, _) = run_cfg(&["daily"], "/nonexistent/acusage.toml").unwrap();
+    let (daily, _) = run_cfg(&["daily"], "/nonexistent/atkusage.toml").unwrap();
     assert!(!daily.default_window);
 }
 
 #[test]
 fn flags_belong_to_their_subcommands() {
-    use acusage::cli::Cli;
-    let ok = |a: &[&str]| Cli::try_parse_from([&["acusage"], a].concat()).is_ok();
+    use atkusage::cli::Cli;
+    let ok = |a: &[&str]| Cli::try_parse_from([&["atkusage"], a].concat()).is_ok();
     assert!(ok(&["daily", "-i", "-p", "x"]));
     assert!(ok(&["blocks", "-a", "-r", "-t", "max", "-n", "4"]));
     assert!(!ok(&["daily", "-a"]));
@@ -289,7 +289,7 @@ fn widest(s: &str) -> usize {
 }
 
 fn check_at(name: &str, args: &[&str], width: usize) {
-    let got = render_at(args, "/nonexistent/acusage.toml", width);
+    let got = render_at(args, "/nonexistent/atkusage.toml", width);
     let path = fixtures()
         .parent()
         .unwrap()
@@ -304,7 +304,7 @@ fn check_at(name: &str, args: &[&str], width: usize) {
 
 #[test]
 fn every_view_fits_80_100_120_columns() {
-    let plain = "/nonexistent/acusage.toml";
+    let plain = "/nonexistent/atkusage.toml";
     let long = fixture_cfg("alias_long.toml");
     let priced = priced();
     let views: &[&[&str]] = &[
@@ -337,11 +337,11 @@ fn every_view_fits_80_100_120_columns() {
 
 #[test]
 fn full_keeps_every_column() {
-    let narrow = render_at(&["daily"], "/nonexistent/acusage.toml", 80);
+    let narrow = render_at(&["daily"], "/nonexistent/atkusage.toml", 80);
     assert!(
         narrow.contains("compact layout (terminal is 80 columns); use --full or a wider terminal")
     );
-    let (out, cli) = run_cfg(&["daily", "--full"], "/nonexistent/acusage.toml").unwrap();
+    let (out, cli) = run_cfg(&["daily", "--full"], "/nonexistent/atkusage.toml").unwrap();
     let full = render_out(&out, &cli, Some(80));
     assert!(full.contains("Cache Create"));
     assert!(!full.contains("compact layout"));
@@ -358,13 +358,13 @@ fn long_alias_is_cut_in_the_middle_not_dropped() {
 fn colliding_short_labels_get_a_note() {
     let got = render_at(&["daily"], &fixture_cfg("alias_collide.toml"), 120);
     assert!(got.contains("look alike"), "{got}");
-    let plain = render_at(&["daily"], "/nonexistent/acusage.toml", 120);
+    let plain = render_at(&["daily"], "/nonexistent/atkusage.toml", 120);
     assert!(!plain.contains("look alike"));
 }
 
 #[test]
 fn blocks_have_one_section_per_account() {
-    let got = render_at(&["blocks"], "/nonexistent/acusage.toml", 200);
+    let got = render_at(&["blocks"], "/nonexistent/atkusage.toml", 200);
     assert!(got.contains("user (Example) (Claude Code)"), "{got}");
     assert!(got.contains("unknown (Claude Code)"));
     assert!(!got.contains("│ Account "));
@@ -376,11 +376,11 @@ fn blocks_have_one_section_per_account() {
 fn codex_blocks_say_they_are_estimates_and_skip_unknown() {
     let got = render_at(
         &["blocks", "--tool", "codex"],
-        "/nonexistent/acusage.toml",
+        "/nonexistent/atkusage.toml",
         200,
     );
     assert!(
-        got.contains("estimated 5h blocks; real Codex windows: acusage limits"),
+        got.contains("estimated 5h blocks; real Codex windows: atkusage limits"),
         "{got}"
     );
     assert!(!got.contains("unknown (Codex)"));
@@ -447,7 +447,7 @@ fn session_gemini_json() {
 fn run_local(args: &[&str]) -> (app::Output, Cli) {
     let tmp = common::fixture_home("local/home");
     let home = tmp.path().to_path_buf();
-    let mut argv: Vec<String> = ["acusage", "--utc"].map(String::from).to_vec();
+    let mut argv: Vec<String> = ["atkusage", "--utc"].map(String::from).to_vec();
     argv.extend(args.iter().map(|s| s.to_string()));
     argv.push("--claude-dir".into());
     argv.push(home.join(".claude").display().to_string());
@@ -456,7 +456,7 @@ fn run_local(args: &[&str]) -> (app::Output, Cli) {
         home,
         claude_config_dir: None,
         codex_home: None,
-        acusage_config: Some("/nonexistent/acusage.toml".into()),
+        atkusage_config: Some("/nonexistent/atkusage.toml".into()),
         now: Utc.with_ymd_and_hms(2026, 11, 2, 12, 0, 0).unwrap(),
     };
     let out = app::run(&cli, &env).unwrap();
@@ -499,7 +499,7 @@ fn local_model_json_field_session() {
 
 /// Run on the synthetic marker home: a built-in model, a LiteLLM-only model and a local model.
 fn run_marker(args: &[&str]) -> (app::Output, Cli) {
-    run_marker_cfg(args, "/nonexistent/acusage.toml")
+    run_marker_cfg(args, "/nonexistent/atkusage.toml")
 }
 
 fn run_marker_cfg(args: &[&str], config: &str) -> (app::Output, Cli) {
@@ -517,7 +517,7 @@ fn run_marker_cfg(args: &[&str], config: &str) -> (app::Output, Cli) {
     );
     let tmp = common::fixture_home("marker/home");
     let home = tmp.path().to_path_buf();
-    let mut argv: Vec<String> = ["acusage", "--utc"].map(String::from).to_vec();
+    let mut argv: Vec<String> = ["atkusage", "--utc"].map(String::from).to_vec();
     argv.extend(args.iter().map(|s| s.to_string()));
     argv.push("--claude-dir".into());
     argv.push(home.join(".claude").display().to_string());
@@ -526,7 +526,7 @@ fn run_marker_cfg(args: &[&str], config: &str) -> (app::Output, Cli) {
         home,
         claude_config_dir: None,
         codex_home: None,
-        acusage_config: Some(config.into()),
+        atkusage_config: Some(config.into()),
         now: Utc.with_ymd_and_hms(2026, 11, 2, 12, 0, 0).unwrap(),
     };
     (app::run(&cli, &env).unwrap(), cli)
@@ -587,7 +587,7 @@ fn no_cost_hides_marker_and_note() {
 fn config_priced_model_is_not_marked() {
     // A config price for the LiteLLM-only model moves it to the config layer: no marker, no note.
     let dir = tempfile::tempdir().unwrap();
-    let cfg = dir.path().join("acusage.toml");
+    let cfg = dir.path().join("atkusage.toml");
     std::fs::write(
         &cfg,
         "[prices.\"gemini-3.7-flash\"]\ninput = 1.0\noutput = 2.0\ncache_write_5m = 0.0\ncache_write_1h = 0.0\ncache_read = 0.0\n",

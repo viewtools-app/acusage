@@ -5,8 +5,8 @@ use std::os::unix::fs::PermissionsExt;
 use std::path::{Path, PathBuf};
 use std::time::SystemTime;
 
-use acusage::app::{self, Env};
-use acusage::cli::Cli;
+use atkusage::app::{self, Env};
+use atkusage::cli::Cli;
 use chrono::{TimeZone, Utc};
 use clap::Parser;
 
@@ -17,13 +17,13 @@ fn env_for(home: &Path) -> Env {
         home: home.to_path_buf(),
         claude_config_dir: None,
         codex_home: None,
-        acusage_config: Some("/nonexistent/acusage.toml".into()),
+        atkusage_config: Some("/nonexistent/atkusage.toml".into()),
         now: Utc.with_ymd_and_hms(2026, 11, 2, 12, 0, 0).unwrap(),
     }
 }
 
 fn cli(report: &str, claude: &Path, codex: &Path) -> Cli {
-    let mut argv: Vec<String> = ["acusage", report, "--utc"].map(String::from).to_vec();
+    let mut argv: Vec<String> = ["atkusage", report, "--utc"].map(String::from).to_vec();
     for (flag, p) in [
         ("--claude-dir", claude.join(".claude")),
         ("--claude-dir", claude.join(".claude-work")),
@@ -112,7 +112,7 @@ fn run_leaves_a_read_only_tree_unchanged() {
         }
         // The Antigravity and Gemini fixtures (databases included), read through their own flags.
         for tool in ["antigravity", "gemini"] {
-            let mut argv: Vec<String> = ["acusage", "session", "--utc", "--tool", tool]
+            let mut argv: Vec<String> = ["atkusage", "session", "--utc", "--tool", tool]
                 .map(String::from)
                 .to_vec();
             argv.extend([

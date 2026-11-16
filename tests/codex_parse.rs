@@ -1,7 +1,7 @@
 use std::path::PathBuf;
 
-use acusage::model::{AccountSource, UsageRecord};
-use acusage::sources::codex::{Finalized, default_dirs, discover, finalize, parse_file};
+use atkusage::model::{AccountSource, UsageRecord};
+use atkusage::sources::codex::{Finalized, default_dirs, discover, finalize, parse_file};
 
 const C1: &str = "00000000-0000-4000-8000-0000000000c1";
 const C2: &str = "00000000-0000-4000-8000-0000000000c2";

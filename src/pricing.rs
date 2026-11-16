@@ -55,7 +55,7 @@ const BUILTIN: &[(&str, f64, f64, f64, f64, f64)] = &[
     ("gpt-5", 1.25, 10.0, 0.0, 0.0, 0.125),
     ("gpt-5.3-codex", 1.75, 14.0, 0.0, 0.0, 0.175),
     // Gemini, from https://ai.google.dev/gemini-api/docs/pricing , read 2026-11-08, Standard
-    // paid tier, text. Output includes thinking tokens (acusage folds them into output).
+    // paid tier, text. Output includes thinking tokens (atkusage folds them into output).
     // No cache write price; cache storage per hour is not modeled. Columns: id, input,
     // output, 0, 0, cached input.
     // gemini-3.8-flash and 3.6-flash: these are the prices until 2026-12-31; from 2027-01-01

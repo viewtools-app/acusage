@@ -1,7 +1,9 @@
 use std::path::{Path, PathBuf};
 
-use acusage::model::{AccountSource, UsageRecord};
-use acusage::sources::claude::{Finalized, Profiles, default_dirs, discover, finalize, parse_file};
+use atkusage::model::{AccountSource, UsageRecord};
+use atkusage::sources::claude::{
+    Finalized, Profiles, default_dirs, discover, finalize, parse_file,
+};
 
 const A1: &str = "00000000-0000-4000-8000-000000000001";
 const A2: &str = "00000000-0000-4000-8000-000000000002";

@@ -1,10 +1,10 @@
 # Usage
 
 ```sh
-acusage [OPTIONS] [COMMAND]
+atkusage [OPTIONS] [COMMAND]
 ```
 
-Run `acusage --help` or `acusage <command> --help` for the same list in your terminal.
+Run `atkusage --help` or `atkusage <command> --help` for the same list in your terminal.
 
 ## Commands
 
@@ -18,7 +18,7 @@ Run `acusage --help` or `acusage <command> --help` for the same list in your ter
 | `accounts` | Every account seen |
 | `limits` | Codex rate-limit windows |
 
-A bare `acusage` shows the last 30 days of `daily`.
+A bare `atkusage` shows the last 30 days of `daily`.
 
 ## Options
 
@@ -66,7 +66,7 @@ All `--*-dir` options are repeatable. If `$CLAUDE_CONFIG_DIR` points at `~/.clau
 A sample table is in the [README](../README.md). Tables end with notes like these:
 
 ```
-* excludes unpriced usage: opus-4-1, gpt-meta; add prices under [prices] in ~/.config/acusage/config.toml
+* excludes unpriced usage: opus-4-1, gpt-meta; add prices under [prices] in ~/.config/atkusage/config.toml
 † priced from LiteLLM snapshot (third-party, not checked)
 API Value = what this usage would cost at API prices; subscriptions are not billed per token.
 unknown = usage whose log has no account record (2 sessions, 2026-11-02..2026-11-02); see README#accounts
@@ -93,8 +93,8 @@ unknown = usage whose log has no account record (2 sessions, 2026-11-02..2026-11
 ## blocks
 
 ```sh
-acusage blocks --active          # the running block, with projections
-acusage blocks -t max --recent   # last 3 days, as % of each account's busiest block
+atkusage blocks --active          # the running block, with projections
+atkusage blocks -t max --recent   # last 3 days, as % of each account's busiest block
 ```
 
 | Option | Effect |
@@ -109,7 +109,7 @@ acusage blocks -t max --recent   # last 3 days, as % of each account's busiest b
 - One section per account, headed `<label> (Claude Code)` or `<label> (Codex)`.
 - Idle stretches show as `idle Xh Ym`.
 - The active block shows `PROJECTED` with the burn rate in `tok/min`, and `REMAINING` with `-t`.
-- Codex blocks are estimates from the logs. For the real windows use `acusage limits`.
+- Codex blocks are estimates from the logs. For the real windows use `atkusage limits`.
 - Codex usage without an account is left out unless you pass `--account unknown`; it is then labeled `mixed accounts`. Claude usage without an account keeps its own `unknown (Claude Code)` section.
 
 How blocks are built: [How it works](how-it-works.md#blocks).
@@ -121,7 +121,7 @@ How blocks are built: [How it works](how-it-works.md#blocks).
 ## limits
 
 ```
-$ acusage limits --utc
+$ atkusage limits --utc
 ┌──────────┬──────┬────────┬─────────────────────────────┬──────────┬──────────────────────┐
 │ Account  │ Plan │ Window │ Used                        │ Resets   │ Observed             │
 ├──────────┼──────┼────────┼─────────────────────────────┼──────────┼──────────────────────┤
@@ -145,6 +145,6 @@ $ acusage limits --utc
 
 ## Uninstall
 
-- npm: `npm uninstall -g acusage`
-- Shell installer: delete `~/.cargo/bin/acusage`
-- Cargo: `cargo uninstall acusage`
+- npm: `npm uninstall -g atkusage`
+- Shell installer: delete `~/.cargo/bin/atkusage`
+- Cargo: `cargo uninstall atkusage`

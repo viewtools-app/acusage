@@ -1,8 +1,8 @@
 use std::io::{IsTerminal, Write};
 
-use acusage::app::{self, Env, UsageError};
-use acusage::cli::Cli;
-use acusage::render::{self, RenderOpts};
+use atkusage::app::{self, Env, UsageError};
+use atkusage::cli::Cli;
+use atkusage::render::{self, RenderOpts};
 use clap::Parser;
 
 fn main() {
@@ -31,7 +31,7 @@ fn main() {
             if cli.opts.verbose {
                 for s in &out.stats {
                     eprintln!(
-                        "acusage: {}: {} files, {} unreadable, {} skipped lines, records {} -> {} after dedup, {} ms",
+                        "atkusage: {}: {} files, {} unreadable, {} skipped lines, records {} -> {} after dedup, {} ms",
                         s.source,
                         s.files,
                         s.unreadable_files,
@@ -43,18 +43,18 @@ fn main() {
                 }
                 for a in &out.attribution {
                     eprintln!(
-                        "acusage: {}: records by account source: owner {}, profile {}, unknown {}",
+                        "atkusage: {}: records by account source: owner {}, profile {}, unknown {}",
                         a.tool, a.owner, a.profile, a.unknown
                     );
                 }
                 eprintln!(
-                    "acusage: skipped {} bad lines, {} unreadable files",
+                    "atkusage: skipped {} bad lines, {} unreadable files",
                     out.skipped_lines, out.unreadable_files
                 );
             }
         }
         Err(e) => {
-            eprintln!("acusage: {e:#}");
+            eprintln!("atkusage: {e:#}");
             let code = if e.downcast_ref::<UsageError>().is_some() {
                 2
             } else {

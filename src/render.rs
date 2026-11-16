@@ -767,7 +767,7 @@ fn collision_note(out: &Output, o: &RenderOpts) -> Option<String> {
     }
     let names: Vec<&str> = dup.iter().map(|s| s.as_str()).collect();
     Some(format!(
-        "{} look alike in this table; run acusage accounts for the full labels or set [aliases] in {}\n",
+        "{} look alike in this table; run atkusage accounts for the full labels or set [aliases] in {}\n",
         names.join(", "),
         out.config_path
     ))
@@ -922,7 +922,7 @@ fn view(
         body.push_str(&t.render(o.color));
     }
     s.push_str(&title_box(
-        &format!("ACUsage · {}", title_of(out)),
+        &format!("ATKUsage · {}", title_of(out)),
         &box_rows(out, &accounts, tools, compacted, o),
         crate::HOMEPAGE.trim_start_matches("https://"),
         o.color,
@@ -1737,7 +1737,7 @@ fn blocks(
             if first.tool == "codex" {
                 heading.push((
                     format!(
-                        "estimated {}h blocks; real Codex windows: acusage limits",
+                        "estimated {}h blocks; real Codex windows: atkusage limits",
                         r.session_hours
                     ),
                     Style::Dim,
@@ -2036,16 +2036,16 @@ mod tests {
     #[test]
     fn title_box_is_left_aligned_and_styled() {
         let rows = vec![("Period", "x".to_string()), ("Agents", "a\nb".to_string())];
-        let plain = title_box("ACUsage · T", &rows, "example.com", false);
-        // Longest line is the title row "Agents  a" vs domain: 11 chars + 2 padding + 2 borders.
-        assert!(plain.lines().all(|l| l.chars().count() == 15));
+        let plain = title_box("ATKUsage · T", &rows, "example.com", false);
+        // Longest line is the title "ATKUsage · T": 12 chars + 2 padding + 2 borders.
+        assert!(plain.lines().all(|l| l.chars().count() == 16));
         assert!(!plain.contains('\x1b'));
         assert!(plain.contains("│ Period  x"));
         assert!(plain.contains("│ Agents  a"));
         assert!(plain.contains("│         b"));
         assert!(plain.contains("example.com │"));
-        let col = title_box("ACUsage · T", &rows, "example.com", true);
-        assert!(col.contains("\x1b[1mACUsage · T\x1b[0m"));
+        let col = title_box("ATKUsage · T", &rows, "example.com", true);
+        assert!(col.contains("\x1b[1mATKUsage · T\x1b[0m"));
         assert!(col.contains("\x1b[2mPeriod\x1b[0m"));
         assert!(col.contains("\x1b[2mexample.com\x1b[0m"));
     }

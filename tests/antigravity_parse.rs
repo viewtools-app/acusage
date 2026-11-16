@@ -1,5 +1,5 @@
-use acusage::model::{AccountSource, UsageRecord};
-use acusage::sources::antigravity::{Finalized, default_dirs, discover, finalize, parse_file};
+use atkusage::model::{AccountSource, UsageRecord};
+use atkusage::sources::antigravity::{Finalized, default_dirs, discover, finalize, parse_file};
 
 mod common;
 

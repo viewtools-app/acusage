@@ -9,7 +9,7 @@ Set TypingSpeed 45ms
 Set CursorBlink false
 
 Hide
-Type 'export HOME="$DEMO_HOME" PATH="$DEMO_BIN:$PATH" TZ=UTC; unset CLAUDE_CONFIG_DIR CODEX_HOME ACUSAGE_CONFIG; export PS1="$ "; clear'
+Type 'export HOME="$DEMO_HOME" PATH="$DEMO_BIN:$PATH" TZ=UTC; unset CLAUDE_CONFIG_DIR CODEX_HOME ATKUSAGE_CONFIG; export PS1="$ "; clear'
 Enter
 Sleep 500ms
 Show

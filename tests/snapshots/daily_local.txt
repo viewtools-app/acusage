@@ -1,11 +1,11 @@
-╭────────────────────────────────────╮
-│ ACUsage · Daily Token Usage Report │
-│                                    │
-│ Period    1 Nov 2026 (UTC)         │
-│ Accounts  1                        │
-│ Agents    Claude Code              │
-│              acusage.viewtools.app │
-╰────────────────────────────────────╯
+╭─────────────────────────────────────╮
+│ ATKUsage · Daily Token Usage Report │
+│                                     │
+│ Period    1 Nov 2026 (UTC)          │
+│ Accounts  1                         │
+│ Agents    Claude Code               │
+│              atkusage.viewtools.app │
+╰─────────────────────────────────────╯
 ┌────────────┬────────────────┬──────────────────────────────┬───────┬────────┬──────────────┬────────────┬──────────────┬─────────────────┐
 │ Date       │ Account        │ Models                       │ Input │ Output │ Cache Create │ Cache Read │ Total Tokens │ API Value (USD) │
 ├────────────┼────────────────┼──────────────────────────────┼───────┼────────┼──────────────┼────────────┼──────────────┼─────────────────┤

@@ -4,6 +4,9 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versioning: [S
 
 ## [Unreleased]
 
+### Changed
+- Renamed from acusage to atkusage (Agent Token usage): the binary, crate, npm package, config directory (`~/.config/atkusage/`), `$ATKUSAGE_CONFIG` and the report title. The old config path and `$ACUSAGE_CONFIG` still work as fallbacks.
+
 ### Added
 - README demo GIFs for every command, recorded from synthetic logs with `scripts/demo/record.sh` (needs [vhs](https://github.com/charmbracelet/vhs)).
 
@@ -19,5 +22,5 @@ First public release.
 - Offline price estimates (built-in table, LiteLLM snapshot, config overrides).
 - Binaries for macOS and Linux, a shell installer and an npm package.
 
-[Unreleased]: https://github.com/viewtools-app/acusage/compare/v0.5.0...HEAD
-[0.5.0]: https://github.com/viewtools-app/acusage/releases/tag/v0.5.0
+[Unreleased]: https://github.com/viewtools-app/atkusage/compare/v0.5.0...HEAD
+[0.5.0]: https://github.com/viewtools-app/atkusage/releases/tag/v0.5.0

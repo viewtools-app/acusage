@@ -8,7 +8,7 @@ body:
   - type: input
     id: version
     attributes:
-      label: Version (`acusage --version`)
+      label: Version (`atkusage --version`)
     validations:
       required: true
   - type: input

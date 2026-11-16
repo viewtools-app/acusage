@@ -1,11 +1,11 @@
 ╭──────────────────────────────────────────╮
-│ ACUsage · Daily Token Usage Report       │
+│ ATKUsage · Daily Token Usage Report      │
 │                                          │
 │ Period    1 Nov 2026 to 2 Nov 2026 (UTC) │
 │ Accounts  2 + unknown                    │
 │ Agents    Codex                          │
 │ Filter    tool: Codex                    │
-│                    acusage.viewtools.app │
+│                   atkusage.viewtools.app │
 ╰──────────────────────────────────────────╯
 ┌────────────┬──────────┬──────────────┬───────┬────────┬───────────┬──────────────┬────────────┬──────────────┬─────────────────┐
 │ Date       │ Account  │ Models       │ Input │ Output │ Reasoning │ Cache Create │ Cache Read │ Total Tokens │ API Value (USD) │
@@ -22,6 +22,6 @@
 ├────────────┼──────────┼──────────────┼───────┼────────┼───────────┼──────────────┼────────────┼──────────────┼─────────────────┤
 │ Total      │          │              │   768 │    279 │         0 │           50 │      1,000 │        2,097 │               - │
 └────────────┴──────────┴──────────────┴───────┴────────┴───────────┴──────────────┴────────────┴──────────────┴─────────────────┘
-* excludes unpriced usage: gpt-meta, gpt-test-a, gpt-test-b, gpt-test-c; add prices under [prices] in /nonexistent/acusage.toml
+* excludes unpriced usage: gpt-meta, gpt-test-a, gpt-test-b, gpt-test-c; add prices under [prices] in /nonexistent/atkusage.toml
 API Value = what this usage would cost at API prices; subscriptions are not billed per token.
 unknown = usage whose log has no account record (1 sessions, 2026-11-02..2026-11-02); see README#accounts
