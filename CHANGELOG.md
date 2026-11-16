@@ -4,6 +4,9 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versioning: [S
 
 ## [Unreleased]
 
+### Fixed
+- The unknown-account note says "1 session" instead of "1 sessions".
+
 ### Added
 - README demo GIFs for every command, recorded from synthetic logs with `scripts/demo/record.sh` (needs [vhs](https://github.com/charmbracelet/vhs)).
 

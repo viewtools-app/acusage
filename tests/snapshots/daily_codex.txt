@@ -24,4 +24,4 @@
 └────────────┴──────────┴──────────────┴───────┴────────┴───────────┴──────────────┴────────────┴──────────────┴─────────────────┘
 * excludes unpriced usage: gpt-meta, gpt-test-a, gpt-test-b, gpt-test-c; add prices under [prices] in /nonexistent/acusage.toml
 API Value = what this usage would cost at API prices; subscriptions are not billed per token.
-unknown = usage whose log has no account record (1 sessions, 2026-11-02..2026-11-02); see README#accounts
+unknown = usage whose log has no account record (1 session, 2026-11-02..2026-11-02); see README#accounts
