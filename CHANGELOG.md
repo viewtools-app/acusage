@@ -12,6 +12,9 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versioning: [S
 ### Added
 - README demo GIFs for every command, recorded from synthetic logs with `scripts/demo/record.sh` (needs [vhs](https://github.com/charmbracelet/vhs)).
 
+### Fixed
+- The unknown-account note says "1 session" instead of "1 sessions".
+
 ## [0.5.0] - 2026-11-13
 
 First public release.

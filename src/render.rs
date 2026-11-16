@@ -984,11 +984,20 @@ fn notes(
     s
 }
 
+/// "1 session", "2 sessions".
+fn counted(n: u64, noun: &str) -> String {
+    if n == 1 {
+        format!("1 {noun}")
+    } else {
+        format!("{n} {noun}s")
+    }
+}
+
 fn unknown_span(out: &Output) -> String {
     match &out.unknown {
         Some(u) => format!(
-            " ({} sessions, {}..{})",
-            u.sessions,
+            " ({}, {}..{})",
+            counted(u.sessions, "session"),
             day(u.first, true),
             day(u.last, true)
         ),
@@ -1909,6 +1918,13 @@ fn limits(out: &Output, rows: &[LimitRow], now: DateTime<Utc>, o: &RenderOpts) -
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn counted_uses_singular_for_one() {
+        assert_eq!(counted(1, "session"), "1 session");
+        assert_eq!(counted(0, "session"), "0 sessions");
+        assert_eq!(counted(3, "session"), "3 sessions");
+    }
 
     #[test]
     fn short_names_dedupes_dated_ids() {
