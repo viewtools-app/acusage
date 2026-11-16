@@ -1,6 +1,6 @@
 ╭────────────────────────────────────────────╮
 │                                            │
-│      acusage - Daily Usage by Account      │
+│      atkusage - Daily Usage by Account      │
 │    Accounts: 7 · Agents: Claude, Codex     │
 │                                            │
 ╰────────────────────────────────────────────╯

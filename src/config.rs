@@ -1,4 +1,5 @@
-//! Optional user config: `~/.config/acusage/config.toml` (`$ACUSAGE_CONFIG` overrides).
+//! Optional user config: `~/.config/atkusage/config.toml` (`$ATKUSAGE_CONFIG` overrides).
+//! The pre-rename location `~/.config/acusage/config.toml` is still read when the new one is absent.
 
 use std::collections::HashMap;
 use std::path::{Path, PathBuf};
@@ -18,11 +19,26 @@ pub struct Config {
     pub prices: HashMap<String, Price>,
 }
 
-/// `$ACUSAGE_CONFIG` if set and non-empty, else `<home>/.config/acusage/config.toml`.
+/// `$ATKUSAGE_CONFIG` if set and non-empty, else `<home>/.config/atkusage/config.toml`,
+/// falling back to the pre-rename `<home>/.config/acusage/config.toml` when only that exists.
 pub fn config_path(env_value: Option<&str>, home: &Path) -> PathBuf {
-    match env_value.map(str::trim) {
-        Some(v) if !v.is_empty() => PathBuf::from(v),
-        _ => home.join(".config").join("acusage").join("config.toml"),
+    config_path_with(env_value, home, |p| p.is_file())
+}
+
+fn config_path_with(
+    env_value: Option<&str>,
+    home: &Path,
+    exists: impl Fn(&Path) -> bool,
+) -> PathBuf {
+    if let Some(v) = env_value.map(str::trim).filter(|v| !v.is_empty()) {
+        return PathBuf::from(v);
+    }
+    let current = home.join(".config").join("atkusage").join("config.toml");
+    let legacy = home.join(".config").join("acusage").join("config.toml");
+    if !exists(&current) && exists(&legacy) {
+        legacy
+    } else {
+        current
     }
 }
 
@@ -49,11 +65,25 @@ mod tests {
         );
         assert_eq!(
             config_path(Some(" "), home),
-            PathBuf::from("/home/u/.config/acusage/config.toml")
+            PathBuf::from("/home/u/.config/atkusage/config.toml")
         );
         assert_eq!(
             config_path(None, home),
-            PathBuf::from("/home/u/.config/acusage/config.toml")
+            PathBuf::from("/home/u/.config/atkusage/config.toml")
+        );
+    }
+
+    #[test]
+    fn path_falls_back_to_legacy_dir() {
+        let home = Path::new("/home/u");
+        let legacy = PathBuf::from("/home/u/.config/acusage/config.toml");
+        let current = PathBuf::from("/home/u/.config/atkusage/config.toml");
+        assert_eq!(config_path_with(None, home, |p| p == legacy), legacy);
+        assert_eq!(config_path_with(None, home, |_| true), current);
+        assert_eq!(config_path_with(None, home, |_| false), current);
+        assert_eq!(
+            config_path_with(Some("/x/c.toml"), home, |_| true),
+            PathBuf::from("/x/c.toml")
         );
     }
 

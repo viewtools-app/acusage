@@ -1,10 +1,10 @@
-use acusage::cli::{Cli, Command, Order, Tool};
+use atkusage::cli::{Cli, Command, Order, Tool};
 use clap::Parser;
 
 #[test]
 fn parses_subcommand_and_flags() {
     let cli = Cli::try_parse_from([
-        "acusage",
+        "atkusage",
         "weekly",
         "--since",
         "2026-01-01",
@@ -46,9 +46,9 @@ fn parses_subcommand_and_flags() {
 
 #[test]
 fn defaults_and_bad_args() {
-    let cli = Cli::try_parse_from(["acusage"]).unwrap();
+    let cli = Cli::try_parse_from(["atkusage"]).unwrap();
     assert_eq!(cli.command, None);
     assert_eq!(cli.opts.order, Order::Asc);
-    assert!(Cli::try_parse_from(["acusage", "--tool", "gpt"]).is_err());
-    assert!(Cli::try_parse_from(["acusage", "bogus"]).is_err());
+    assert!(Cli::try_parse_from(["atkusage", "--tool", "gpt"]).is_err());
+    assert!(Cli::try_parse_from(["atkusage", "bogus"]).is_err());
 }

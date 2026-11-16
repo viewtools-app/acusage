@@ -1,10 +1,10 @@
 ╭────────────────────────────╮
-│ ACUsage · Rate Limits      │
+│ ATKUsage · Rate Limits     │
 │                            │
 │ Period    2 Nov 2026 (UTC) │
 │ Accounts  2 + unknown      │
 │ Agents    Codex            │
-│      acusage.viewtools.app │
+│     atkusage.viewtools.app │
 ╰────────────────────────────╯
 ┌──────────┬──────┬────────┬─────────────────────────────┬──────────┐
 │ Account  │ Plan │ Window │ Used                        │ Resets   │

@@ -1,4 +1,4 @@
-acusage includes data derived from LiteLLM (https://github.com/BerriAI/litellm):
+atkusage includes data derived from LiteLLM (https://github.com/BerriAI/litellm):
 data/litellm-prices.json is a filtered, converted snapshot of
 model_prices_and_context_window.json.
 

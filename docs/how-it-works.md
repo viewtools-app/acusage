@@ -38,5 +38,5 @@ A block starts at the UTC hour of an account's first record and lasts `--session
 About 100 ms (± 5) mean and 66 MiB peak memory for `daily --json` over 480 MB of Claude Code logs, 90 MB of Codex logs and 60 MB of Antigravity data (MacBook, 2026-11-08, [hyperfine](https://github.com/sharkdp/hyperfine) `-N --warmup 3 --runs 20`). Measure your own:
 
 ```sh
-hyperfine -N --warmup 3 'acusage daily --json'
+hyperfine -N --warmup 3 'atkusage daily --json'
 ```

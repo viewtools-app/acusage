@@ -3,14 +3,14 @@ use std::path::PathBuf;
 
 #[derive(Parser, Debug)]
 #[command(
-    name = "acusage",
+    name = "atkusage",
     version,
     about = "Usage report for Claude Code, Codex, Antigravity and Gemini CLI logs",
     after_help = concat!(
         "Account: the login a session ran under; \"unknown\" means the log has no account record.\n\
 API Value: what the usage would cost at API list prices; subscriptions are not billed per token.\n\
 Blocks: 5-hour windows that start on the hour of an account's first activity (estimates).\n\
-Config: ~/.config/acusage/config.toml, or $ACUSAGE_CONFIG ([aliases] and [prices]).\n\
+Config: ~/.config/atkusage/config.toml, or $ATKUSAGE_CONFIG ([aliases] and [prices]).\n\
 Homepage: ",
         crate::homepage!()
     )

@@ -1,6 +1,6 @@
 # JSON output
 
-`acusage <command> --json` prints one object. `schema` is `1`. Within schema 1, fields are only added, never renamed, removed or retyped; a breaking change bumps `schema`.
+`atkusage <command> --json` prints one object. `schema` is `1`. Within schema 1, fields are only added, never renamed, removed or retyped; a breaking change bumps `schema`.
 
 | Field | Type | Notes |
 |---|---|---|

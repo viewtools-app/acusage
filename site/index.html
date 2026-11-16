@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>acusage · token usage per account for Claude Code, Codex, Antigravity and Gemini CLI</title>
+<title>atkusage · token usage per account for Claude Code, Codex, Antigravity and Gemini CLI</title>
 <meta name="description" content="A read-only CLI that reports token usage and API value from local Claude Code, Codex, Antigravity and Gemini CLI logs, broken down by account. Offline, single Rust binary.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23f5f5f2'/%3E%3Cpath d='M7 10l7 6-7 6' stroke='%23d9480f' stroke-width='3' fill='none'/%3E%3Cpath d='M16 23h9' stroke='%232a2a28' stroke-width='3'/%3E%3C/svg%3E">
 <style>
@@ -121,50 +121,50 @@
 <body>
 <div class="status">
   <div class="wrap">
-    <span><span class="s">acusage</span> 0:readme* 1:install 2:privacy</span>
+    <span><span class="s">atkusage</span> 0:readme* 1:install 2:privacy</span>
     <span>
       <a class="hide-sm" href="#install">install</a>
       <a class="hide-sm" href="#commands">commands</a>
       <a class="hide-sm" href="#privacy">privacy</a>
-      <a href="https://github.com/viewtools-app/acusage#readme">docs</a>
-      <a href="https://github.com/viewtools-app/acusage">github</a>
+      <a href="https://github.com/viewtools-app/atkusage#readme">docs</a>
+      <a href="https://github.com/viewtools-app/atkusage">github</a>
     </span>
   </div>
 </div>
 
 <div class="wrap">
   <header class="hero">
-    <div class="logo">acusage<span class="acc">_</span></div>
+    <div class="logo">atkusage<span class="acc">_</span></div>
     <div class="c">open source · MIT · offline</div>
     <h1>Know which account spent your <span class="acc">AI tokens</span>.</h1>
-    <p class="lede">acusage reads the local logs of <span class="hi">Claude Code</span>, <span class="hi">Codex</span>,
+    <p class="lede">atkusage reads the local logs of <span class="hi">Claude Code</span>, <span class="hi">Codex</span>,
       <span class="hi">Antigravity</span> and <span class="hi">Gemini CLI</span> and reports tokens and API value per
       account, agent, model, day and session. One Rust binary. No network, no writes.</p>
 
     <div class="cta">
       <a class="btn pri" href="#install">Get started</a>
-      <a class="btn sec" href="https://github.com/viewtools-app/acusage">GitHub</a>
+      <a class="btn sec" href="https://github.com/viewtools-app/atkusage">GitHub</a>
     </div>
     <div id="install" class="install">
-      <span class="p">npx acusage<span class="cursor" aria-hidden="true"></span></span>
-      <button class="copy" type="button" data-copy="npx acusage">[ copy ]</button>
+      <span class="p">npx atkusage<span class="cursor" aria-hidden="true"></span></span>
+      <button class="copy" type="button" data-copy="npx atkusage">[ copy ]</button>
     </div>
     <div class="or">
       <div class="c">or install the binary (macOS, Linux)</div>
-      <span class="p">curl -LsSf https://github.com/viewtools-app/acusage/releases/latest/download/acusage-installer.sh | sh</span>
+      <span class="p">curl -LsSf https://github.com/viewtools-app/atkusage/releases/latest/download/atkusage-installer.sh | sh</span>
     </div>
 
     <div class="term">
       <div class="bar"><i></i><i></i><i></i><span>~ zsh</span></div>
       <div class="body">
-        <div class="p">acusage daily --compact</div>
+        <div class="p">atkusage daily --compact</div>
 <pre class="out"><span class="bx">╭──────────────────────────────────────────╮</span>
-<span class="bx">│</span> ACUsage · Daily Token Usage Report       <span class="bx">│</span>
+<span class="bx">│</span> ATKUsage · Daily Token Usage Report      <span class="bx">│</span>
 <span class="bx">│</span>                                          <span class="bx">│</span>
 <span class="bx">│</span> Period    9 Nov 2026 to 10 Nov 2026      <span class="bx">│</span>
 <span class="bx">│</span> Accounts  3                              <span class="bx">│</span>
 <span class="bx">│</span> Agents    Claude Code, Codex             <span class="bx">│</span>
-<span class="bx">│</span>                    acusage.viewtools.app <span class="bx">│</span>
+<span class="bx">│</span>                   atkusage.viewtools.app <span class="bx">│</span>
 <span class="bx">╰──────────────────────────────────────────╯</span>
 <span class="bx">┌────────────┬───────────────┬────────────────┬───────────────┬───────────┬─────────┬─────────────────┐</span>
 <span class="bx">│</span> Date       <span class="bx">│</span> Agent         <span class="bx">│</span> Account        <span class="bx">│</span> Models        <span class="bx">│</span> Input     <span class="bx">│</span> Output  <span class="bx">│</span> API Value (USD) <span class="bx">│</span>
@@ -207,10 +207,10 @@
 
   <section id="commands">
     <div class="rule"><span class="n">02</span> commands</div>
-    <div class="p">acusage --help</div>
+    <div class="p">atkusage --help</div>
 <pre class="help">Usage report for Claude Code, Codex, Antigravity and Gemini CLI logs
 
-<span class="hi">Usage:</span> acusage [OPTIONS] [COMMAND]
+<span class="hi">Usage:</span> atkusage [OPTIONS] [COMMAND]
 
 <span class="hi">Commands:</span>
   <span class="acc">daily</span>     Usage per day (default)
@@ -221,7 +221,7 @@
   <span class="acc">accounts</span>  Every account seen
   <span class="acc">limits</span>    Codex rate-limit windows
 <span class="dim">  ...</span></pre>
-    <div class="c" style="margin-top:12px">full reference: <a href="https://github.com/viewtools-app/acusage/blob/main/docs/usage.md">docs/usage.md</a></div>
+    <div class="c" style="margin-top:12px">full reference: <a href="https://github.com/viewtools-app/atkusage/blob/main/docs/usage.md">docs/usage.md</a></div>
   </section>
 
   <section id="privacy">
@@ -236,14 +236,14 @@
   <section class="final">
     <h2>Try it in five seconds.</h2>
     <div class="install">
-      <span class="p">npx acusage</span>
-      <button class="copy" type="button" data-copy="npx acusage">[ copy ]</button>
+      <span class="p">npx atkusage</span>
+      <button class="copy" type="button" data-copy="npx atkusage">[ copy ]</button>
     </div>
     <div class="c" style="margin-top:12px">reads your local logs, prints a table, touches nothing</div>
   </section>
 
   <footer>
-    <span>acusage · MIT · <a href="https://github.com/viewtools-app/acusage">github</a> · <a href="https://github.com/viewtools-app/acusage/releases">releases</a></span>
+    <span>atkusage · MIT · <a href="https://github.com/viewtools-app/atkusage">github</a> · <a href="https://github.com/viewtools-app/atkusage/releases">releases</a></span>
     <span>logo font: LisaTerminal Paper by <a href="https://www.kreativekorp.com/software/fonts/">Kreative Software</a></span>
   </footer>
 </div>

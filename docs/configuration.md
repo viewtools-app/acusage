@@ -1,9 +1,11 @@
 # Configuration
 
-acusage needs no config. To rename accounts or set prices, create `~/.config/acusage/config.toml` (or point `$ACUSAGE_CONFIG` at a file). A missing file means defaults; an invalid file is an error that names the path.
+atkusage needs no config. To rename accounts or set prices, create `~/.config/atkusage/config.toml` (or point `$ATKUSAGE_CONFIG` at a file). A missing file means defaults; an invalid file is an error that names the path.
+
+Upgrading from acusage: if `~/.config/atkusage/config.toml` does not exist, the old `~/.config/acusage/config.toml` is read, and `$ACUSAGE_CONFIG` is honored when `$ATKUSAGE_CONFIG` is unset. Move the file when convenient.
 
 ```toml
-# Labels. The key is the account id or email, as in `acusage accounts --json` (rows[].account.id).
+# Labels. The key is the account id or email, as in `atkusage accounts --json` (rows[].account.id).
 [aliases]
 "00000000-0000-0000-0000-000000000000" = "Work"
 "user@example.com" = "Personal"
@@ -45,8 +47,8 @@ Each row belongs to one account. Its label is the alias, else the email, else th
 |---|---|
 | `owner` | The log names the account: a Claude `session-owner` record or `creator_account_id` in a Codex `session_meta`. Strongest. |
 | `profile` | The log lives in a Claude config dir whose `.claude.json` has an `oauthAccount`. |
-| `unknown` | Neither: old logs, removed or never signed-in config dirs, and all Antigravity and Gemini CLI logs (their credentials live in files acusage never opens). |
+| `unknown` | Neither: old logs, removed or never signed-in config dirs, and all Antigravity and Gemini CLI logs (their credentials live in files atkusage never opens). |
 
 - `unknown` usage is shown but not counted: the title reads `Accounts  N + unknown`. Its cost kind is `api_equivalent`, as the billing mode is unknown.
-- `acusage --verbose` prints, per agent, how many records came from each source.
+- `atkusage --verbose` prints, per agent, how many records came from each source.
 - Aliases only rename; they never move usage between accounts.

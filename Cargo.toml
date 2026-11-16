@@ -1,11 +1,11 @@
 [package]
-name = "acusage"
-version = "0.5.0"
+name = "atkusage"
+version = "0.6.0"
 edition = "2024"
 license = "MIT"
 description = "AI coding usage: read-only usage report for Claude Code, Codex, Antigravity and Gemini CLI logs"
-homepage = "https://acusage.viewtools.app"
-repository = "https://github.com/viewtools-app/acusage"
+homepage = "https://atkusage.viewtools.app"
+repository = "https://github.com/viewtools-app/atkusage"
 readme = "README.md"
 keywords = ["claude", "codex", "gemini", "tokens", "usage"]
 categories = ["command-line-utilities", "development-tools"]

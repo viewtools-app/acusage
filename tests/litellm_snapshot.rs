@@ -5,7 +5,7 @@ use std::process::Command;
 #[test]
 fn generator_matches_expected_fixture() {
     let root = env!("CARGO_MANIFEST_DIR");
-    let out = std::env::temp_dir().join(format!("acusage-litellm-{}.json", std::process::id()));
+    let out = std::env::temp_dir().join(format!("atkusage-litellm-{}.json", std::process::id()));
     let run = Command::new("python3")
         .args(["-I", &format!("{root}/scripts/update-litellm-prices.py")])
         .arg(format!("{root}/tests/fixtures/litellm/input.json"))

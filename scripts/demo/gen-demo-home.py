@@ -4,7 +4,7 @@
 Usage: scripts/demo/gen-demo-home.py <out-dir>
 
 Everything is made up: fake UUIDs, example.com emails, /Users/user/... paths. Timestamps are
-relative to now, so `acusage blocks --active` always has a running block. The output dir is
+relative to now, so `atkusage blocks --active` always has a running block. The output dir is
 created fresh; it must not exist or must be empty.
 """
 
@@ -175,7 +175,7 @@ def gemini(home: Path) -> None:
 
 
 def config(home: Path) -> None:
-    path = home / ".config" / "acusage" / "config.toml"
+    path = home / ".config" / "atkusage" / "config.toml"
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(
         "[aliases]\n"

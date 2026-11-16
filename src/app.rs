@@ -37,7 +37,7 @@ pub struct Env {
     pub home: PathBuf,
     pub claude_config_dir: Option<String>,
     pub codex_home: Option<String>,
-    pub acusage_config: Option<String>,
+    pub atkusage_config: Option<String>,
     /// Clock, injectable so output is deterministic in tests.
     pub now: DateTime<Utc>,
 }
@@ -50,7 +50,9 @@ impl Env {
                 .unwrap_or_default(),
             claude_config_dir: std::env::var("CLAUDE_CONFIG_DIR").ok(),
             codex_home: std::env::var("CODEX_HOME").ok(),
-            acusage_config: std::env::var("ACUSAGE_CONFIG").ok(),
+            atkusage_config: std::env::var("ATKUSAGE_CONFIG")
+                .ok()
+                .or_else(|| std::env::var("ACUSAGE_CONFIG").ok()),
             now: Utc::now(),
         }
     }
@@ -284,7 +286,7 @@ pub fn run(cli: &Cli, env: &Env) -> Result<Output> {
     if o.last == Some(0) {
         return Err(UsageError("--last: 0 is not a positive number".into()).into());
     }
-    // A bare `acusage` shows the last 30 days; any date flag or a subcommand asks for more.
+    // A bare `atkusage` shows the last 30 days; any date flag or a subcommand asks for more.
     let default_window =
         cli.command.is_none() && since.is_none() && until.is_none() && o.last.is_none();
     if default_window {
@@ -303,7 +305,7 @@ pub fn run(cli: &Cli, env: &Env) -> Result<Output> {
         project: group.project.clone(),
     };
 
-    let cfg_path = config::config_path(env.acusage_config.as_deref(), &env.home);
+    let cfg_path = config::config_path(env.atkusage_config.as_deref(), &env.home);
     let cfg = config::load(&cfg_path)?;
     let prices = PriceTable::builtin().with_overrides(cfg.prices.clone());
 

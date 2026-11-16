@@ -6,7 +6,7 @@ body:
     id: problem
     attributes:
       label: Problem
-      description: What do you want to do that acusage does not support?
+      description: What do you want to do that atkusage does not support?
     validations:
       required: true
   - type: textarea
@@ -22,4 +22,4 @@ body:
   - type: markdown
     attributes:
       value: |
-        acusage stays read-only and offline. Please do not paste real session logs.
+        atkusage stays read-only and offline. Please do not paste real session logs.

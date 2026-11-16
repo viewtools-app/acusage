@@ -1,20 +1,20 @@
-# acusage
+# atkusage
 
 Know which account spent your AI coding tokens.
 
-acusage (AI coding usage) reads the local logs of Claude Code, Codex, Antigravity and Gemini CLI and reports tokens and estimated cost per account, agent, model, day and session. Offline, read-only, one Rust binary.
+atkusage (AI coding usage) reads the local logs of Claude Code, Codex, Antigravity and Gemini CLI and reports tokens and estimated cost per account, agent, model, day and session. Offline, read-only, one Rust binary.
 
-[![CI](https://github.com/viewtools-app/acusage/actions/workflows/ci.yml/badge.svg)](https://github.com/viewtools-app/acusage/actions/workflows/ci.yml) [![npm](https://img.shields.io/npm/v/acusage)](https://www.npmjs.com/package/acusage) [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![CI](https://github.com/viewtools-app/atkusage/actions/workflows/ci.yml/badge.svg)](https://github.com/viewtools-app/atkusage/actions/workflows/ci.yml) [![npm](https://img.shields.io/npm/v/atkusage)](https://www.npmjs.com/package/atkusage) [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 ```
-$ acusage daily --compact          # illustrative numbers
+$ atkusage daily --compact          # illustrative numbers
 ╭──────────────────────────────────────────╮
-│ ACUsage · Daily Token Usage Report       │
+│ ATKUsage · Daily Token Usage Report      │
 │                                          │
 │ Period    9 Nov 2026                     │
 │ Accounts  2                              │
 │ Agents    Claude Code, Codex             │
-│                    acusage.viewtools.app │
+│                   atkusage.viewtools.app │
 ╰──────────────────────────────────────────╯
 ┌────────────┬───────────────┬────────────────┬───────────────┬───────────┬─────────┬─────────────────┐
 │ Date       │ Agent         │ Account        │ Models        │ Input     │ Output  │ API Value (USD) │
@@ -33,10 +33,10 @@ API Value = what this usage would cost at API prices; subscriptions are not bill
 ## Install
 
 ```sh
-npx acusage                # run without installing (Node 18+)
-npm install -g acusage
-curl -LsSf https://github.com/viewtools-app/acusage/releases/latest/download/acusage-installer.sh | sh
-cargo install --git https://github.com/viewtools-app/acusage
+npx atkusage                # run without installing (Node 18+)
+npm install -g atkusage
+curl -LsSf https://github.com/viewtools-app/atkusage/releases/latest/download/atkusage-installer.sh | sh
+cargo install --git https://github.com/viewtools-app/atkusage
 ```
 
 Prebuilt for macOS (arm64, x86_64) and Linux (arm64, x86_64, glibc 2.34+). No Windows yet.
@@ -45,18 +45,18 @@ Prebuilt for macOS (arm64, x86_64) and Linux (arm64, x86_64, glibc 2.34+). No Wi
 
 | Command | Shows |
 |---|---|
-| `acusage` / `acusage daily` | Usage per day (bare `acusage`: last 30 days) |
-| `acusage weekly` | Usage per ISO week, Monday start |
-| `acusage monthly` | Usage per month |
-| `acusage session` | One row per session |
-| `acusage blocks` | 5-hour billing blocks per account |
-| `acusage accounts` | Every account seen |
-| `acusage limits` | Codex rate-limit windows |
+| `atkusage` / `atkusage daily` | Usage per day (bare `atkusage`: last 30 days) |
+| `atkusage weekly` | Usage per ISO week, Monday start |
+| `atkusage monthly` | Usage per month |
+| `atkusage session` | One row per session |
+| `atkusage blocks` | 5-hour billing blocks per account |
+| `atkusage accounts` | Every account seen |
+| `atkusage limits` | Codex rate-limit windows |
 
 ```sh
-acusage daily --since 2026-11-01 --breakdown   # per-model sub-rows
-acusage blocks --active                        # current block with projections
-acusage monthly --tool codex --json            # machine-readable
+atkusage daily --since 2026-11-01 --breakdown   # per-model sub-rows
+atkusage blocks --active                        # current block with projections
+atkusage monthly --tool codex --json            # machine-readable
 ```
 
 ### Demos
@@ -64,45 +64,45 @@ acusage monthly --tool codex --json            # machine-readable
 The recordings below use synthetic logs (`scripts/demo/record.sh`); numbers are illustrative.
 
 <details open>
-<summary><code>acusage daily</code>: usage per day</summary>
+<summary><code>atkusage daily</code>: usage per day</summary>
 
-![acusage daily --last 2](docs/demo/daily.gif)
+![atkusage daily --last 2](docs/demo/daily.gif)
 </details>
 
 <details>
-<summary><code>acusage weekly</code>: usage per ISO week</summary>
+<summary><code>atkusage weekly</code>: usage per ISO week</summary>
 
-![acusage weekly --last 2](docs/demo/weekly.gif)
+![atkusage weekly --last 2](docs/demo/weekly.gif)
 </details>
 
 <details>
-<summary><code>acusage monthly</code>: usage per month</summary>
+<summary><code>atkusage monthly</code>: usage per month</summary>
 
-![acusage monthly](docs/demo/monthly.gif)
+![atkusage monthly](docs/demo/monthly.gif)
 </details>
 
 <details>
-<summary><code>acusage session</code>: one row per session</summary>
+<summary><code>atkusage session</code>: one row per session</summary>
 
-![acusage session](docs/demo/session.gif)
+![atkusage session](docs/demo/session.gif)
 </details>
 
 <details>
-<summary><code>acusage blocks</code>: 5-hour billing blocks</summary>
+<summary><code>atkusage blocks</code>: 5-hour billing blocks</summary>
 
-![acusage blocks --active --account Personal](docs/demo/blocks.gif)
+![atkusage blocks --active --account Personal](docs/demo/blocks.gif)
 </details>
 
 <details>
-<summary><code>acusage accounts</code>: every account seen</summary>
+<summary><code>atkusage accounts</code>: every account seen</summary>
 
-![acusage accounts](docs/demo/accounts.gif)
+![atkusage accounts](docs/demo/accounts.gif)
 </details>
 
 <details>
-<summary><code>acusage limits</code>: Codex rate-limit windows</summary>
+<summary><code>atkusage limits</code>: Codex rate-limit windows</summary>
 
-![acusage limits](docs/demo/limits.gif)
+![atkusage limits](docs/demo/limits.gif)
 </details>
 
 ## Accounts

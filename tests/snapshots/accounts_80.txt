@@ -1,11 +1,11 @@
 ╭──────────────────────────────────────────╮
-│ ACUsage · Accounts                       │
+│ ATKUsage · Accounts                      │
 │                                          │
 │ Period    1 Nov 2026 to 3 Nov 2026 (UTC) │
 │ Accounts  5 + unknown                    │
 │ Agents    Claude Code, Codex             │
 │ View      compact                        │
-│                    acusage.viewtools.app │
+│                   atkusage.viewtools.app │
 ╰──────────────────────────────────────────╯
 ┌─────────────────────┬────────┬────────────┬───────┬────────┬─────────────────┐
 │ Account             │ Agent  │ Last Seen  │ Input │ Output │ API Value (USD) │
@@ -27,7 +27,7 @@
 │ Total               │        │            │   830 │    338 │          $0.00* │
 └─────────────────────┴────────┴────────────┴───────┴────────┴─────────────────┘
 * excludes unpriced usage: opus-4-1, gpt-meta, gpt-test-a, gpt-test-b,
-  gpt-test-c; add prices under [prices] in /nonexistent/acusage.toml
+  gpt-test-c; add prices under [prices] in /nonexistent/atkusage.toml
 † priced from LiteLLM snapshot (third-party, not checked)
 API Value = what this usage would cost at API prices; subscriptions are not
   billed per token.

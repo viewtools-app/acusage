@@ -1,12 +1,12 @@
 ╭──────────────────────────────────────────╮
-│ ACUsage · Daily Token Usage Report       │
+│ ATKUsage · Daily Token Usage Report      │
 │                                          │
 │ Period    2 Jan 2026 to 4 Jan 2026 (UTC) │
 │ Accounts  unknown                        │
 │ Agents    Antigravity                    │
 │ View      by model                       │
 │ Filter    tool: Antigravity              │
-│                    acusage.viewtools.app │
+│                   atkusage.viewtools.app │
 ╰──────────────────────────────────────────╯
 ┌────────────┬─────────┬─────────────────────────┬───────┬────────┬──────────────┬────────────┬──────────────┬─────────────────┐
 │ Date       │ Account │ Models                  │ Input │ Output │ Cache Create │ Cache Read │ Total Tokens │ API Value (USD) │
@@ -29,6 +29,6 @@
 ├────────────┼─────────┼─────────────────────────┼───────┼────────┼──────────────┼────────────┼──────────────┼─────────────────┤
 │ Total      │         │                         │ 8,980 │  1,600 │            0 │        155 │       10,735 │               - │
 └────────────┴─────────┴─────────────────────────┴───────┴────────┴──────────────┴────────────┴──────────────┴─────────────────┘
-* excludes unpriced usage: model-a, model-b, model-big, model-c, model-c-last, model-f, model_placeholder_x9, unknown; add prices under [prices] in /nonexistent/acusage.toml
+* excludes unpriced usage: model-a, model-b, model-big, model-c, model-c-last, model-f, model_placeholder_x9, unknown; add prices under [prices] in /nonexistent/atkusage.toml
 API Value = what this usage would cost at API prices; subscriptions are not billed per token.
 unknown = usage whose log has no account record (8 sessions, 2026-01-02..2026-01-04); see README#accounts

@@ -1,8 +1,8 @@
 # AGENTS.md
 
-Notes for AI coding agents working on acusage. Humans: see [CONTRIBUTING.md](CONTRIBUTING.md).
+Notes for AI coding agents working on atkusage. Humans: see [CONTRIBUTING.md](CONTRIBUTING.md).
 
-acusage is a Rust CLI that reads local Claude Code, Codex, Antigravity and Gemini CLI logs and
+atkusage is a Rust CLI that reads local Claude Code, Codex, Antigravity and Gemini CLI logs and
 reports token usage and estimated cost per account.
 
 ## Commands
